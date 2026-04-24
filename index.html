@@ -497,12 +497,24 @@ section{
 .growth-item{
   display:flex;gap:24px;align-items:flex-start;
   padding:28px;border:1px solid var(--line);
-  background:
-    linear-gradient(90deg,rgba(5,5,5,.85),rgba(5,5,5,.55) 50%,rgba(5,5,5,.8)),
-    url('images/571327.jpg') center/cover no-repeat;
-  transition:border-color .3s,filter .3s,transform .3s;
+  background:linear-gradient(90deg,rgba(5,5,5,.7),rgba(5,5,5,.45));
+  backdrop-filter:blur(2px);
+  transition:border-color .3s,background .3s;
 }
-.growth-item:hover{border-color:var(--gold);transform:translateX(4px);filter:brightness(1.15)}
+.growth-item:hover{border-color:var(--gold);background:linear-gradient(90deg,rgba(5,5,5,.55),rgba(212,175,55,.08))}
+
+.growth-section{position:relative}
+.growth-section::before{
+  content:'';
+  position:absolute;
+  top:0;bottom:0;
+  left:50%;transform:translateX(-50%);
+  width:100vw;
+  background:
+    linear-gradient(180deg,rgba(5,5,5,.55),rgba(5,5,5,.7)),
+    url('images/571327.jpg') center/cover no-repeat fixed;
+  z-index:-1;
+}
 .growth-item::before{
   counter-increment:g;
   content:counter(g,decimal-leading-zero);
@@ -898,7 +910,7 @@ footer .copy{font-size:11px;color:#6a6456;margin-top:18px;letter-spacing:1px}
 </section>
 
 <!-- Growth -->
-<section>
+<section class="growth-section">
   <div class="sec-head reveal">
     <div class="sec-label">04 / GROWTH</div>
     <h2 class="sec-title">得られる<span class="gold">成長</span></h2>
