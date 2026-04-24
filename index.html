@@ -497,10 +497,12 @@ section{
 .growth-item{
   display:flex;gap:24px;align-items:flex-start;
   padding:28px;border:1px solid var(--line);
-  background:linear-gradient(90deg,rgba(212,175,55,.06),transparent);
-  transition:border-color .3s,background .3s;
+  background:
+    linear-gradient(90deg,rgba(5,5,5,.85),rgba(5,5,5,.55) 50%,rgba(5,5,5,.8)),
+    url('images/571327.jpg') center/cover no-repeat;
+  transition:border-color .3s,filter .3s,transform .3s;
 }
-.growth-item:hover{border-color:var(--gold);background:linear-gradient(90deg,rgba(212,175,55,.12),transparent)}
+.growth-item:hover{border-color:var(--gold);transform:translateX(4px);filter:brightness(1.15)}
 .growth-item::before{
   counter-increment:g;
   content:counter(g,decimal-leading-zero);
