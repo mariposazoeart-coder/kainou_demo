@@ -642,14 +642,18 @@ footer .copy{font-size:11px;color:#6a6456;margin-top:18px;letter-spacing:1px}
 
 /* Mobile */
 @media(max-width:768px){
-  .fv-video{object-fit:contain;opacity:.55}
+  .fv-video{
+    width:167%;height:100%;
+    left:50%;transform:translateX(-50%);
+    object-fit:cover;opacity:.5;
+  }
   .fv-char{height:46%;max-height:360px}
-  .fv-char.lady{left:74% !important;animation-delay:9s !important}
-  .fv-char.man{left:26% !important;animation-delay:10.4s !important}
-  .fv-char.main{height:52%;max-height:400px;animation-delay:11.8s !important}
-  .fv-text-top{animation-delay:14.2s !important}
-  .fv-text-bottom{animation-delay:14.6s !important}
-  .scroll-hint{animation-delay:15.5s !important}
+  .fv-char.lady{left:74% !important;animation:riseLady 2s cubic-bezier(.22,1,.36,1) 9s forwards !important}
+  .fv-char.man{left:26% !important;animation:riseMan 2s cubic-bezier(.22,1,.36,1) 10.4s forwards !important}
+  .fv-char.main{height:52%;max-height:400px;animation:riseMain 2.2s cubic-bezier(.22,1,.36,1) 11.8s forwards !important}
+  .fv-text-top{animation:fvBlockRise 1.5s ease 14.2s forwards !important}
+  .fv-text-bottom{animation:fvBlockRise 1.5s ease 14.6s forwards !important}
+  .scroll-hint{animation:fvBlockRise 1s ease 15.5s forwards !important}
   .profile-name{font-size:32px;letter-spacing:3px}
   .growth-item{flex-direction:column;gap:8px}
   .pricing-box{padding:40px 24px}
