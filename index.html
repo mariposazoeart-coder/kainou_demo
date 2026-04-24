@@ -358,7 +358,26 @@ section{
   background:linear-gradient(135deg,var(--gold-light),var(--gold),var(--gold-dark));
   -webkit-background-clip:text;background-clip:text;color:transparent;
 }
-.sec-head{text-align:center;margin-bottom:80px}
+.sec-head{
+  position:relative;
+  text-align:center;
+  padding:60px 20px;
+  margin:0 0 60px;
+}
+.sec-head::before{
+  content:'';
+  position:absolute;
+  top:0;bottom:0;
+  left:50%;transform:translateX(-50%);
+  width:100vw;
+  background:
+    linear-gradient(rgba(212,175,55,.05) 1px,transparent 1px) 0 0/50px 50px,
+    linear-gradient(90deg,rgba(212,175,55,.05) 1px,transparent 1px) 0 0/50px 50px,
+    #050505;
+  border-top:1px solid rgba(212,175,55,.2);
+  border-bottom:1px solid rgba(212,175,55,.2);
+  z-index:-1;
+}
 
 /* Corner brackets */
 .bracket{position:relative}
