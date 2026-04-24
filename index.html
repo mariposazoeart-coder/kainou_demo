@@ -29,24 +29,6 @@ body{
   position:relative;
 }
 
-/* Global cyber grid background */
-body::before{
-  content:'';
-  position:fixed;
-  inset:0;
-  background:
-    linear-gradient(rgba(212,175,55,.04) 1px,transparent 1px) 0 0/60px 60px,
-    linear-gradient(90deg,rgba(212,175,55,.04) 1px,transparent 1px) 0 0/60px 60px,
-    radial-gradient(ellipse at 50% 0%,rgba(212,175,55,.08),transparent 60%);
-  pointer-events:none;
-  z-index:0;
-  animation:gridShift 20s linear infinite;
-}
-@keyframes gridShift{
-  0%{background-position:0 0,0 0,0 0}
-  100%{background-position:60px 60px,60px 60px,0 0}
-}
-
 /* Scanline overlay */
 body::after{
   content:'';
