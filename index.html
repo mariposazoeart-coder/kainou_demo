@@ -93,7 +93,7 @@ nav .cta:hover{
   animation:fvBlockRise 1.5s ease 12.2s forwards;
 }
 .fv-text-bottom{
-  position:absolute;bottom:60px;left:0;right:0;
+  position:absolute;bottom:30px;left:0;right:0;
   z-index:5;text-align:center;padding:0 20px;
   opacity:0;transform:translateY(20px);
   animation:fvBlockRise 1.5s ease 12.6s forwards;
@@ -265,18 +265,19 @@ nav .cta:hover{
   0%,100%{transform:translateX(-100%)}
   50%{transform:translateX(200%)}
 }
-.btn-hint{display:block;margin-top:14px;font-size:11px;color:#8a8373;letter-spacing:1px}
+.btn-hint{display:block;margin-top:22px;font-size:11px;color:#8a8373;letter-spacing:1px}
 
 /* Scroll hint */
 .scroll-hint{
-  position:absolute;bottom:30px;left:50%;transform:translateX(-50%);
+  position:absolute;bottom:14px;right:24px;
   z-index:5;font-family:'Orbitron',sans-serif;font-size:10px;letter-spacing:4px;
-  color:var(--gold);opacity:0;animation:fvTextRise 1s ease 13.5s forwards;
+  color:var(--gold);opacity:0;animation:fvBlockRise 1s ease 13.5s forwards;
+  writing-mode:vertical-rl;text-orientation:mixed;
 }
 .scroll-hint::after{
-  content:'';display:block;width:1px;height:50px;
+  content:'';display:block;width:1px;height:30px;
   background:linear-gradient(to bottom,var(--gold),transparent);
-  margin:12px auto 0;
+  margin:8px auto 0;
   animation:scrollPulse 2s ease-in-out infinite;
 }
 @keyframes scrollPulse{
