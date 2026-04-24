@@ -18,9 +18,9 @@
   --line:rgba(212,175,55,.25);
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;background:var(--bg)}
 body{
-  background:var(--bg);
+  background:transparent;
   color:#e8e3d4;
   font-family:'Noto Sans JP',sans-serif;
   font-weight:300;
@@ -138,13 +138,6 @@ nav .cta:hover{
   transform:translateX(-50%);
   width:min(900px,95vw);
   height:100%;
-  transform-style:preserve-3d;
-  animation:turntable 10s ease-in-out 6s infinite;
-}
-@keyframes turntable{
-  0%,100%{transform:translateX(-50%) rotateY(0deg)}
-  25%{transform:translateX(-50%) rotateY(25deg)}
-  75%{transform:translateX(-50%) rotateY(-25deg)}
 }
 .fv-char{
   position:absolute;bottom:0;
@@ -291,6 +284,27 @@ nav .cta:hover{
 @keyframes scrollPulse{
   0%,100%{opacity:.3;transform:scaleY(.6)}
   50%{opacity:1;transform:scaleY(1)}
+}
+
+/* Global background video wrapper (below FV) */
+.bg-video-wrap{
+  position:fixed;inset:0;
+  z-index:-1;
+  pointer-events:none;
+  overflow:hidden;
+}
+.bg-video-wrap video{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  object-fit:cover;
+  opacity:.25;
+  filter:contrast(1.1) saturate(.8) hue-rotate(-10deg);
+}
+.bg-video-wrap::after{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse at 50% 50%,transparent 0%,rgba(5,5,5,.75) 70%,#050505 100%),
+    linear-gradient(180deg,rgba(5,5,5,.6),rgba(5,5,5,.9));
 }
 
 /* Sections */
@@ -618,6 +632,12 @@ footer .copy{font-size:11px;color:#6a6456;margin-top:18px;letter-spacing:1px}
 </style>
 </head>
 <body>
+
+<div class="bg-video-wrap">
+  <video autoplay muted loop playsinline>
+    <source src="images/0_Futuristic_Data.mp4" type="video/mp4">
+  </video>
+</div>
 
 <nav>
   <div class="logo">KAINOU ACADEMY</div>
