@@ -318,7 +318,10 @@ nav .cta:hover{
   top:0;bottom:0;
   left:50%;transform:translateX(-50%);
   width:100vw;
-  background:#050505;
+  background:
+    linear-gradient(rgba(212,175,55,.05) 1px,transparent 1px) 0 0/50px 50px,
+    linear-gradient(90deg,rgba(212,175,55,.05) 1px,transparent 1px) 0 0/50px 50px,
+    #050505;
   z-index:-1;
 }
 
@@ -373,7 +376,11 @@ section{
 .pillar{
   position:relative;
   padding:32px 28px;
-  background:linear-gradient(135deg,rgba(212,175,55,.04),rgba(0,0,0,.4));
+  background:
+    linear-gradient(rgba(212,175,55,.05) 1px,transparent 1px) 0 0/40px 40px,
+    linear-gradient(90deg,rgba(212,175,55,.05) 1px,transparent 1px) 0 0/40px 40px,
+    linear-gradient(135deg,rgba(212,175,55,.04),rgba(0,0,0,.5)),
+    #050505;
   border:1px solid var(--line);
   clip-path:polygon(20px 0,100% 0,100% calc(100% - 20px),calc(100% - 20px) 100%,0 100%,0 20px);
   transition:transform .4s,border-color .4s,box-shadow .4s;
