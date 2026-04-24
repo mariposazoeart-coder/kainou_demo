@@ -29,18 +29,6 @@ body{
   position:relative;
 }
 
-/* Global subtle grid overlay (shown through all transparent sections) */
-body::before{
-  content:'';
-  position:fixed;
-  inset:0;
-  background:
-    linear-gradient(rgba(212,175,55,.05) 1px,transparent 1px) 0 0/50px 50px,
-    linear-gradient(90deg,rgba(212,175,55,.05) 1px,transparent 1px) 0 0/50px 50px;
-  pointer-events:none;
-  z-index:0;
-}
-
 /* Scanline overlay */
 body::after{
   content:'';
