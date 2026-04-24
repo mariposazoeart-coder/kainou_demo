@@ -306,10 +306,18 @@ nav .cta:hover{
     linear-gradient(180deg,rgba(5,5,5,.2),rgba(5,5,5,.55));
 }
 
-/* Solid black wrapper for content below About */
-.solid-black-bg{
-  position:relative;z-index:2;
+/* Full-width solid black bg behind About intro */
+.about-intro{
+  position:relative;
+}
+.about-intro::before{
+  content:'';
+  position:absolute;
+  top:0;bottom:0;
+  left:50%;transform:translateX(-50%);
+  width:100vw;
   background:#050505;
+  z-index:-1;
 }
 
 /* Sections */
@@ -641,6 +649,12 @@ footer .copy{font-size:11px;color:#6a6456;margin-top:18px;letter-spacing:1px}
 </head>
 <body>
 
+<div class="bg-video-wrap">
+  <video autoplay muted loop playsinline>
+    <source src="images/0_Futuristic_Data.mp4" type="video/mp4">
+  </video>
+</div>
+
 <nav>
   <div class="logo">KAINOU ACADEMY</div>
   <ul>
@@ -688,7 +702,7 @@ footer .copy{font-size:11px;color:#6a6456;margin-top:18px;letter-spacing:1px}
 </section>
 
 <!-- About -->
-<section id="about">
+<section id="about" class="about-intro">
   <div class="sec-head reveal">
     <div class="sec-label">01 / ABOUT</div>
     <h2 class="sec-title">ビジネス開脳<span class="gold">アカデミー</span>とは</h2>
@@ -699,8 +713,6 @@ footer .copy{font-size:11px;color:#6a6456;margin-top:18px;letter-spacing:1px}
     </p>
   </div>
 </section>
-
-<div class="solid-black-bg">
 
 <section style="padding-top:80px">
   <div class="pillars">
@@ -1027,8 +1039,6 @@ footer .copy{font-size:11px;color:#6a6456;margin-top:18px;letter-spacing:1px}
     <a href="#pricing" class="btn-cyber">今すぐ申し込む</a>
   </div>
 </section>
-
-</div><!-- /solid-black-bg -->
 
 <footer>
   <div class="fname">BUSINESS KAINOU ACADEMY</div>
