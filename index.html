@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ビジネス開脳アカデミー | 実践型ビジネス学習プラットフォーム</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Noto+Sans+JP:wght@300;500;700;900&family=Cinzel:wght@700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#d4af37;
+  --gold-light:#f4d77a;
+  --gold-dark:#8a6d1b;
+  --gold-glow:rgba(212,175,55,.6);
+  --bg:#050505;
+  --bg2:#0a0a0a;
+  --line:rgba(212,175,55,.25);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:#e8e3d4;
+  font-family:'Noto Sans JP',sans-serif;
+  font-weight:300;
+  line-height:1.8;
+  overflow-x:hidden;
+  position:relative;
+}
+
+/* Global cyber grid background */
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  background:
+    linear-gradient(rgba(212,175,55,.04) 1px,transparent 1px) 0 0/60px 60px,
+    linear-gradient(90deg,rgba(212,175,55,.04) 1px,transparent 1px) 0 0/60px 60px,
+    radial-gradient(ellipse at 50% 0%,rgba(212,175,55,.08),transparent 60%);
+  pointer-events:none;
+  z-index:0;
+  animation:gridShift 20s linear infinite;
+}
+@keyframes gridShift{
+  0%{background-position:0 0,0 0,0 0}
+  100%{background-position:60px 60px,60px 60px,0 0}
+}
+
+/* Scanline overlay */
+body::after{
+  content:'';
+  position:fixed;
+  inset:0;
+  background:repeating-linear-gradient(0deg,rgba(0,0,0,.15) 0 1px,transparent 1px 3px);
+  pointer-events:none;
+  z-index:9999;
+  mix-blend-mode:overlay;
+  opacity:.3;
+}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;
+  z-index:100;
+  padding:18px 40px;
+  backdrop-filter:blur(14px);
+  background:rgba(5,5,5,.65);
+  border-bottom:1px solid var(--line);
+  display:flex;align-items:center;justify-content:space-between;
+}
+nav .logo{
+  font-family:'Cinzel',serif;
+  font-weight:900;
+  font-size:18px;
+  background:linear-gradient(135deg,var(--gold-light),var(--gold),var(--gold-dark));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  letter-spacing:2px;
+}
+nav ul{list-style:none;display:flex;gap:28px}
+nav a{
+  color:#c9c4b5;text-decoration:none;font-size:13px;letter-spacing:2px;
+  font-family:'Orbitron',sans-serif;text-transform:uppercase;
+  transition:color .3s,text-shadow .3s;
+  position:relative;
+}
+nav a:hover{color:var(--gold-light);text-shadow:0 0 12px var(--gold-glow)}
+nav .cta{
+  padding:10px 22px;border:1px solid var(--gold);
+  color:var(--gold-light);
+  clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px);
+  background:linear-gradient(135deg,rgba(212,175,55,.1),transparent);
+}
+nav .cta:hover{
+  background:linear-gradient(135deg,rgba(212,175,55,.25),rgba(212,175,55,.05));
+  box-shadow:0 0 20px var(--gold-glow);
+}
+@media(max-width:880px){nav ul{display:none}nav{padding:14px 20px}}
+
+/* FV */
+.fv{
+  position:relative;
+  height:100vh;min-height:700px;
+  overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+  isolation:isolate;
+}
+.fv-video{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  object-fit:cover;
+  opacity:.45;
+  z-index:0;
+  filter:contrast(1.1) saturate(.9) hue-rotate(-10deg);
+}
+.fv::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse at 50% 60%,transparent 0%,rgba(5,5,5,.7) 70%,#050505 100%),
+    linear-gradient(180deg,rgba(5,5,5,.3) 0%,transparent 40%,rgba(5,5,5,.95) 100%);
+  z-index:1;
+}
+.fv::after{
+  content:'';position:absolute;inset:0;
+  background:repeating-linear-gradient(0deg,transparent 0 2px,rgba(212,175,55,.03) 2px 3px);
+  pointer-events:none;z-index:2;
+}
+
+/* FV character layer */
+.fv-characters{
+  position:absolute;inset:0;z-index:3;
+  display:flex;align-items:flex-end;justify-content:center;
+  pointer-events:none;
+}
+.fv-char{
+  position:absolute;
+  bottom:0;
+  height:85%;
+  max-height:720px;
+  width:auto;
+  opacity:0;
+  filter:drop-shadow(0 0 40px rgba(212,175,55,.4)) drop-shadow(0 0 80px rgba(0,0,0,.6));
+}
+/* Solo reveal phases */
+.fv-char.solo-lady{animation:soloLady 3s ease-in-out .8s forwards}
+.fv-char.solo-man{animation:soloMan 3s ease-in-out 3.5s forwards}
+.fv-char.solo-main{animation:soloMain 3s ease-in-out 6.2s forwards}
+@keyframes soloLady{
+  0%{opacity:0;transform:translateY(40px) scale(.95);filter:blur(20px) drop-shadow(0 0 40px rgba(212,175,55,.4))}
+  25%{opacity:1;transform:translateY(0) scale(1);filter:blur(0) drop-shadow(0 0 50px rgba(212,175,55,.6))}
+  75%{opacity:1;transform:translateY(0) scale(1);filter:blur(0) drop-shadow(0 0 50px rgba(212,175,55,.6))}
+  100%{opacity:0;transform:translateY(-20px) scale(1.05);filter:blur(8px)}
+}
+@keyframes soloMan{
+  0%{opacity:0;transform:translateY(40px) scale(.95);filter:blur(20px) drop-shadow(0 0 40px rgba(212,175,55,.4))}
+  25%{opacity:1;transform:translateY(0) scale(1);filter:blur(0) drop-shadow(0 0 50px rgba(212,175,55,.6))}
+  75%{opacity:1;transform:translateY(0) scale(1);filter:blur(0) drop-shadow(0 0 50px rgba(212,175,55,.6))}
+  100%{opacity:0;transform:translateY(-20px) scale(1.05);filter:blur(8px)}
+}
+@keyframes soloMain{
+  0%{opacity:0;transform:translateY(40px) scale(.95);filter:blur(20px) drop-shadow(0 0 40px rgba(212,175,55,.4))}
+  25%{opacity:1;transform:translateY(0) scale(1);filter:blur(0) drop-shadow(0 0 50px rgba(212,175,55,.6))}
+  75%{opacity:1;transform:translateY(0) scale(1);filter:blur(0) drop-shadow(0 0 50px rgba(212,175,55,.6))}
+  100%{opacity:0;transform:translateY(-20px) scale(1.05);filter:blur(8px)}
+}
+
+/* Final trio rise */
+.fv-trio{
+  position:absolute;inset:0;z-index:4;
+  display:flex;align-items:flex-end;justify-content:center;
+  gap:0;
+  pointer-events:none;
+  opacity:0;
+  animation:trioFade 1.5s ease 9s forwards;
+}
+@keyframes trioFade{to{opacity:1}}
+.fv-trio img{
+  height:80%;max-height:680px;width:auto;
+  transform:translateY(120%);
+  filter:drop-shadow(0 0 40px rgba(212,175,55,.5));
+  margin:0 -40px;
+}
+.fv-trio img:nth-child(1){animation:riseUp 1.6s cubic-bezier(.22,1,.36,1) 9s forwards}
+.fv-trio img:nth-child(2){animation:riseUp 1.6s cubic-bezier(.22,1,.36,1) 9.25s forwards;z-index:2}
+.fv-trio img:nth-child(3){animation:riseUp 1.6s cubic-bezier(.22,1,.36,1) 9.5s forwards}
+@keyframes riseUp{
+  0%{transform:translateY(120%);opacity:0}
+  100%{transform:translateY(0);opacity:1}
+}
+
+/* FV text overlay */
+.fv-text{
+  position:relative;z-index:5;
+  text-align:center;
+  padding:0 20px;
+  opacity:0;
+  transform:translateY(20px);
+  animation:fvTextRise 1.5s ease 10.5s forwards;
+  pointer-events:none;
+}
+.fv-text > *{pointer-events:auto}
+@keyframes fvTextRise{to{opacity:1;transform:translateY(0)}}
+
+.fv-eyebrow{
+  font-family:'Orbitron',sans-serif;
+  font-size:11px;letter-spacing:8px;
+  color:var(--gold);
+  margin-bottom:24px;
+  text-transform:uppercase;
+}
+.fv-eyebrow::before,.fv-eyebrow::after{
+  content:'';display:inline-block;width:40px;height:1px;
+  background:var(--gold);vertical-align:middle;margin:0 16px;
+}
+.fv h1{
+  font-family:'Noto Sans JP',sans-serif;
+  font-weight:900;
+  font-size:clamp(28px,5.5vw,64px);
+  line-height:1.35;
+  margin-bottom:28px;
+  letter-spacing:.05em;
+}
+.fv h1 .gold{
+  background:linear-gradient(135deg,#fff5c2 0%,var(--gold-light) 30%,var(--gold) 50%,var(--gold-dark) 70%,var(--gold-light) 100%);
+  background-size:200% 200%;
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:goldShimmer 3s ease infinite;
+  text-shadow:0 0 40px var(--gold-glow);
+}
+@keyframes goldShimmer{
+  0%,100%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+}
+.fv .sub{
+  font-size:clamp(12px,1.4vw,16px);
+  color:#b8b3a3;
+  margin-bottom:36px;
+  letter-spacing:.1em;
+}
+.fv .tags{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:10px;
+  margin-bottom:40px;font-size:11px;letter-spacing:3px;
+  font-family:'Orbitron',sans-serif;color:var(--gold-light);
+}
+.fv .tags span{
+  padding:6px 14px;
+  border:1px solid var(--line);
+  background:rgba(212,175,55,.05);
+  clip-path:polygon(8px 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%,0 8px);
+}
+.btn-cyber{
+  display:inline-block;
+  position:relative;
+  padding:18px 60px;
+  font-family:'Orbitron',sans-serif;
+  font-size:14px;letter-spacing:4px;
+  color:#050505;
+  text-decoration:none;
+  background:linear-gradient(135deg,var(--gold-light),var(--gold),var(--gold-dark));
+  border:none;
+  font-weight:900;
+  text-transform:uppercase;
+  clip-path:polygon(15px 0,100% 0,100% calc(100% - 15px),calc(100% - 15px) 100%,0 100%,0 15px);
+  transition:transform .3s,box-shadow .3s;
+  box-shadow:0 0 30px var(--gold-glow),inset 0 0 20px rgba(255,255,255,.2);
+  cursor:pointer;
+}
+.btn-cyber:hover{
+  transform:translateY(-2px);
+  box-shadow:0 0 50px var(--gold-glow),0 10px 30px rgba(0,0,0,.5);
+}
+.btn-cyber::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.5),transparent);
+  transform:translateX(-100%);
+  animation:btnShine 3s ease-in-out infinite;
+}
+@keyframes btnShine{
+  0%,100%{transform:translateX(-100%)}
+  50%{transform:translateX(200%)}
+}
+.btn-hint{display:block;margin-top:14px;font-size:11px;color:#8a8373;letter-spacing:1px}
+
+/* Scroll hint */
+.scroll-hint{
+  position:absolute;bottom:30px;left:50%;transform:translateX(-50%);
+  z-index:5;font-family:'Orbitron',sans-serif;font-size:10px;letter-spacing:4px;
+  color:var(--gold);opacity:0;animation:fvTextRise 1s ease 11.5s forwards;
+}
+.scroll-hint::after{
+  content:'';display:block;width:1px;height:50px;
+  background:linear-gradient(to bottom,var(--gold),transparent);
+  margin:12px auto 0;
+  animation:scrollPulse 2s ease-in-out infinite;
+}
+@keyframes scrollPulse{
+  0%,100%{opacity:.3;transform:scaleY(.6)}
+  50%{opacity:1;transform:scaleY(1)}
+}
+
+/* Sections */
+section{
+  position:relative;z-index:2;
+  padding:120px 40px;
+  max-width:1200px;
+  margin:0 auto;
+}
+@media(max-width:768px){section{padding:80px 20px}}
+
+.sec-label{
+  display:inline-block;
+  font-family:'Orbitron',sans-serif;
+  font-size:11px;letter-spacing:6px;
+  color:var(--gold);
+  margin-bottom:20px;
+  padding:6px 18px;
+  border:1px solid var(--line);
+  background:rgba(212,175,55,.05);
+}
+.sec-title{
+  font-size:clamp(26px,3.6vw,42px);
+  font-weight:900;
+  line-height:1.4;
+  margin-bottom:40px;
+  letter-spacing:.03em;
+}
+.sec-title .gold{
+  background:linear-gradient(135deg,var(--gold-light),var(--gold),var(--gold-dark));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.sec-head{text-align:center;margin-bottom:80px}
+
+/* Corner brackets */
+.bracket{position:relative}
+.bracket::before,.bracket::after{
+  content:'';position:absolute;width:30px;height:30px;
+  border:2px solid var(--gold);
+}
+.bracket::before{top:-8px;left:-8px;border-right:none;border-bottom:none}
+.bracket::after{bottom:-8px;right:-8px;border-left:none;border-top:none}
+
+/* About - 7 pillars */
+.pillars{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:24px;
+  margin-top:40px;
+}
+.pillar{
+  position:relative;
+  padding:32px 28px;
+  background:linear-gradient(135deg,rgba(212,175,55,.04),rgba(0,0,0,.4));
+  border:1px solid var(--line);
+  clip-path:polygon(20px 0,100% 0,100% calc(100% - 20px),calc(100% - 20px) 100%,0 100%,0 20px);
+  transition:transform .4s,border-color .4s,box-shadow .4s;
+}
+.pillar:hover{
+  transform:translateY(-6px);
+  border-color:var(--gold);
+  box-shadow:0 10px 40px rgba(212,175,55,.15);
+}
+.pillar .num{
+  font-family:'Orbitron',sans-serif;
+  font-size:12px;color:var(--gold);
+  letter-spacing:4px;margin-bottom:14px;
+}
+.pillar h3{
+  font-size:18px;font-weight:700;
+  margin-bottom:14px;color:var(--gold-light);
+  line-height:1.5;
+}
+.pillar p{font-size:14px;color:#c9c4b5;line-height:1.8}
+
+/* Course list */
+.course-block{
+  background:linear-gradient(135deg,rgba(10,10,10,.8),rgba(20,15,5,.6));
+  border:1px solid var(--line);
+  padding:40px 36px;
+  margin-bottom:24px;
+  position:relative;
+  clip-path:polygon(15px 0,100% 0,100% calc(100% - 15px),calc(100% - 15px) 100%,0 100%,0 15px);
+}
+.course-block h3{
+  font-size:22px;font-weight:900;
+  color:var(--gold-light);
+  margin-bottom:20px;
+  padding-bottom:14px;
+  border-bottom:1px solid var(--line);
+  letter-spacing:.03em;
+}
+.course-block h4{
+  font-size:14px;color:var(--gold);
+  margin:18px 0 10px;letter-spacing:2px;
+  font-family:'Orbitron',sans-serif;
+}
+.course-block ul{list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
+.course-block li{
+  padding:10px 14px 10px 28px;position:relative;
+  background:rgba(212,175,55,.03);
+  border-left:2px solid var(--gold);
+  font-size:14px;color:#d4cfbf;
+  transition:background .3s,transform .3s;
+}
+.course-block li:hover{background:rgba(212,175,55,.1);transform:translateX(4px)}
+.course-block li::before{
+  content:'◆';position:absolute;left:10px;top:50%;transform:translateY(-50%);
+  color:var(--gold);font-size:8px;
+}
+.course-block p{font-size:14px;color:#b8b3a3;margin:8px 0}
+
+/* GENSEN */
+.gensen-lead{
+  font-size:16px;color:#c9c4b5;margin-bottom:30px;
+  padding:24px;background:rgba(212,175,55,.04);
+  border-left:3px solid var(--gold);
+}
+.gensen-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:24px;margin:30px 0;
+}
+.gensen-card{
+  padding:28px;border:1px solid var(--line);
+  background:rgba(0,0,0,.4);
+  clip-path:polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px);
+}
+.gensen-card h4{
+  color:var(--gold-light);font-size:17px;margin-bottom:14px;font-weight:700;
+}
+.gensen-card ul{list-style:none}
+.gensen-card li{padding:6px 0 6px 20px;position:relative;font-size:14px;color:#c9c4b5}
+.gensen-card li::before{
+  content:'▸';position:absolute;left:0;color:var(--gold);
+}
+
+/* Growth list */
+.growth-list{
+  display:grid;gap:18px;counter-reset:g;
+}
+.growth-item{
+  display:flex;gap:24px;align-items:flex-start;
+  padding:28px;border:1px solid var(--line);
+  background:linear-gradient(90deg,rgba(212,175,55,.06),transparent);
+  transition:border-color .3s,background .3s;
+}
+.growth-item:hover{border-color:var(--gold);background:linear-gradient(90deg,rgba(212,175,55,.12),transparent)}
+.growth-item::before{
+  counter-increment:g;
+  content:counter(g,decimal-leading-zero);
+  font-family:'Orbitron',sans-serif;font-weight:900;
+  font-size:36px;
+  color:transparent;
+  -webkit-text-stroke:1px var(--gold);
+  min-width:70px;
+  line-height:1;
+}
+.growth-item h3{font-size:17px;color:var(--gold-light);margin-bottom:8px;font-weight:700}
+.growth-item p{font-size:14px;color:#b8b3a3}
+
+/* Schedule */
+.schedule{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;
+}
+.sched-card{
+  padding:32px 24px;text-align:center;
+  border:1px solid var(--line);
+  background:radial-gradient(ellipse at top,rgba(212,175,55,.08),transparent);
+  clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px);
+}
+.sched-card .icon{
+  font-family:'Orbitron',sans-serif;
+  font-size:11px;letter-spacing:3px;color:var(--gold);
+  margin-bottom:12px;
+}
+.sched-card h3{color:var(--gold-light);font-size:18px;margin-bottom:10px}
+.sched-card p{font-size:13px;color:#b8b3a3}
+
+/* FAQ */
+.faq-item{
+  border:1px solid var(--line);margin-bottom:14px;
+  background:rgba(0,0,0,.4);overflow:hidden;
+  clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px);
+}
+.faq-q{
+  padding:22px 28px;cursor:pointer;
+  display:flex;justify-content:space-between;align-items:center;
+  font-weight:700;color:var(--gold-light);
+  font-size:16px;
+  transition:background .3s;
+}
+.faq-q:hover{background:rgba(212,175,55,.06)}
+.faq-q::after{
+  content:'+';font-family:'Orbitron',sans-serif;color:var(--gold);font-size:22px;
+  transition:transform .3s;
+}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-a{
+  max-height:0;overflow:hidden;
+  transition:max-height .5s ease,padding .5s ease;
+  padding:0 28px;color:#c9c4b5;font-size:14px;
+}
+.faq-item.open .faq-a{max-height:300px;padding:0 28px 22px}
+
+/* Pricing */
+.pricing-box{
+  max-width:700px;margin:0 auto;
+  padding:60px 50px;text-align:center;
+  background:
+    radial-gradient(ellipse at top,rgba(212,175,55,.15),transparent 70%),
+    linear-gradient(135deg,rgba(20,15,5,.9),rgba(0,0,0,.95));
+  border:1px solid var(--gold);
+  position:relative;
+  clip-path:polygon(30px 0,100% 0,100% calc(100% - 30px),calc(100% - 30px) 100%,0 100%,0 30px);
+  box-shadow:0 0 60px rgba(212,175,55,.2);
+}
+.pricing-box .label{
+  font-family:'Orbitron',sans-serif;
+  font-size:12px;letter-spacing:6px;color:var(--gold);
+  margin-bottom:24px;
+}
+.price{
+  font-family:'Cinzel',serif;
+  font-size:clamp(40px,6vw,72px);font-weight:900;line-height:1;
+  margin:16px 0;
+  background:linear-gradient(135deg,#fff5c2,var(--gold-light),var(--gold),var(--gold-dark));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  text-shadow:0 0 40px var(--gold-glow);
+}
+.price small{font-size:16px;letter-spacing:2px;margin-left:8px}
+.pricing-note{font-size:12px;color:#8a8373;margin-bottom:30px}
+.include-list{
+  text-align:left;display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:8px;margin:30px 0;list-style:none;
+}
+.include-list li{
+  padding:10px 14px 10px 32px;position:relative;
+  font-size:13px;color:#c9c4b5;
+  background:rgba(212,175,55,.05);
+}
+.include-list li::before{
+  content:'✓';position:absolute;left:12px;color:var(--gold);font-weight:900;
+}
+
+/* Profile */
+.profile-head{
+  display:grid;grid-template-columns:1fr;
+  gap:30px;margin-bottom:50px;text-align:center;
+}
+.profile-name{
+  font-family:'Cinzel',serif;font-size:48px;font-weight:900;
+  background:linear-gradient(135deg,var(--gold-light),var(--gold));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  letter-spacing:6px;
+}
+.profile-en{font-family:'Orbitron',sans-serif;color:var(--gold);letter-spacing:4px;font-size:12px;margin-top:6px}
+.profile-tag{
+  font-size:22px;font-weight:900;color:var(--gold-light);
+  margin:20px 0;
+}
+.profile-bio{font-size:15px;color:#c9c4b5;max-width:900px;margin:0 auto;text-align:left}
+.profile-bio h4{
+  font-size:18px;color:var(--gold-light);margin:30px 0 12px;
+  padding-bottom:8px;border-bottom:1px solid var(--line);
+}
+.profile-bio ul{list-style:none;margin:10px 0 20px}
+.profile-bio li{
+  padding:8px 0 8px 24px;position:relative;font-size:14px;
+}
+.profile-bio li::before{
+  content:'▸';position:absolute;left:0;color:var(--gold);
+}
+.profile-bio strong{color:var(--gold-light);font-weight:700}
+
+/* Footer */
+footer{
+  position:relative;z-index:2;
+  margin-top:120px;padding:50px 40px 30px;
+  border-top:1px solid var(--line);
+  text-align:center;
+  background:linear-gradient(180deg,transparent,rgba(212,175,55,.03));
+}
+footer .fname{
+  font-family:'Cinzel',serif;font-size:16px;letter-spacing:3px;
+  background:linear-gradient(135deg,var(--gold-light),var(--gold));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  margin-bottom:20px;
+}
+footer .links{margin:16px 0;font-size:12px}
+footer .links a{color:#b8b3a3;text-decoration:none;margin:0 12px;transition:color .3s}
+footer .links a:hover{color:var(--gold)}
+footer .copy{font-size:11px;color:#6a6456;margin-top:18px;letter-spacing:1px}
+
+/* Reveal animation */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity 1s ease,transform 1s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+
+/* Glitch title effect */
+.glitch{position:relative;display:inline-block}
+.glitch::before,.glitch::after{
+  content:attr(data-text);position:absolute;top:0;left:0;width:100%;
+  background:transparent;
+}
+.glitch::before{color:rgba(212,175,55,.8);animation:glitchA 4s infinite;clip-path:polygon(0 0,100% 0,100% 35%,0 35%)}
+.glitch::after{color:rgba(244,215,122,.6);animation:glitchB 4s infinite;clip-path:polygon(0 65%,100% 65%,100% 100%,0 100%)}
+@keyframes glitchA{
+  0%,92%,100%{transform:translate(0)}
+  94%{transform:translate(-3px,1px)}
+  96%{transform:translate(2px,-1px)}
+}
+@keyframes glitchB{
+  0%,92%,100%{transform:translate(0)}
+  94%{transform:translate(3px,-1px)}
+  96%{transform:translate(-2px,1px)}
+}
+
+/* Mobile */
+@media(max-width:768px){
+  .fv-trio img{margin:0 -25px}
+  .profile-name{font-size:32px;letter-spacing:3px}
+  .growth-item{flex-direction:column;gap:8px}
+  .pricing-box{padding:40px 24px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">KAINOU ACADEMY</div>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#courses">Courses</a></li>
+    <li><a href="#gensen">Gensen</a></li>
+    <li><a href="#profile">Profile</a></li>
+  </ul>
+  <a href="#pricing" class="cta">申込み</a>
+</nav>
+
+<!-- FV -->
+<section class="fv" style="padding:0;max-width:none;margin:0">
+  <video class="fv-video" autoplay muted loop playsinline>
+    <source src="images/Brain_Artificial_Intelligence_FV.mp4" type="video/mp4">
+  </video>
+
+  <div class="fv-characters">
+    <img src="images/lady_fv.png" class="fv-char solo-lady" alt="">
+    <img src="images/man_fv.png" class="fv-char solo-man" alt="">
+    <img src="images/main_fv.png" class="fv-char solo-main" alt="">
+  </div>
+
+  <div class="fv-trio">
+    <img src="images/lady_fv.png" alt="">
+    <img src="images/main_fv.png" alt="">
+    <img src="images/man_fv.png" alt="">
+  </div>
+
+  <div class="fv-text">
+    <div class="fv-eyebrow">BUSINESS KAINOU ACADEMY</div>
+    <h1>
+      ビジネス戦闘力を鍛える<br>
+      <span class="gold glitch" data-text="&quot;実践型&quot;アカデミー。">"実践型"アカデミー。</span>
+    </h1>
+    <p class="sub">経営者・個人事業主・ビジネスパーソンのための総合ビジネス学習＆実務支援プログラム。</p>
+    <div class="tags">
+      <span>思考力</span><span>マーケティング</span><span>集客</span><span>SNS</span><span>営業</span><span>AI</span><span>事業戦略</span>
+    </div>
+    <p class="sub" style="margin-bottom:24px">ビジネスに必要なすべての能力を<br>一つのアカデミーで学べる。</p>
+    <a href="#pricing" class="btn-cyber">今すぐ申し込む</a>
+    <span class="btn-hint">クリックで価格・お申し込み方法をご案内します</span>
+  </div>
+
+  <div class="scroll-hint">SCROLL</div>
+</section>
+
+<!-- About -->
+<section id="about">
+  <div class="sec-head reveal">
+    <div class="sec-label">01 / ABOUT</div>
+    <h2 class="sec-title">ビジネス開脳<span class="gold">アカデミー</span>とは</h2>
+    <p style="max-width:780px;margin:0 auto;color:#c9c4b5;font-size:15px">
+      ビジネス開脳アカデミーは、<br>
+      "ビジネスで成果を出すための思考力と実務スキル"を体系的に学べる学習プラットフォームです。<br><br>
+      対象者は限定せず、経営者・ビジネスパーソン・副業・個人事業・社会人 を含むあらゆるビジネス従事者です。
+    </p>
+  </div>
+
+  <div class="pillars">
+    <div class="pillar reveal"><div class="num">01 / PILLAR</div><h3>ビジネス開脳スキルの習得</h3><p>マインドマップを使った「見える化・整理・戦略設計」を中心に、事業構築の"脳の使い方"を鍛える。</p></div>
+    <div class="pillar reveal"><div class="num">02 / PILLAR</div><h3>実務スキルの総合講座</h3><p>マーケティング・集客・SNS・AI・デザインなど、実際にビジネスで使うスキルを複数講師の教材で網羅。</p></div>
+    <div class="pillar reveal"><div class="num">03 / PILLAR</div><h3>月1回のライブ講義</h3><p>山本による「最新事業戦略＆事例共有」のライブ講義（生配信）。※アーカイブ視聴可能</p></div>
+    <div class="pillar reveal"><div class="num">04 / PILLAR</div><h3>月1回のビジネスQ&A会</h3><p>メンバーの質問に回答し、実際の事業に落とし込む"実践型フィードバック"。</p></div>
+    <div class="pillar reveal"><div class="num">05 / PILLAR</div><h3>山本の壁打ち現場の見学（動画）</h3><p>1回60分・30万円で提供しているビジネス壁打ちコンサルを共有し、リアルな思考法・分析・課題解決プロセスを学べる。</p></div>
+    <div class="pillar reveal"><div class="num">06 / PILLAR</div><h3>東京リアル懇親会（月1回）</h3><p>メンバー同士、そして山本と直接交流できるリアルコミュニティ。</p></div>
+    <div class="pillar reveal"><div class="num">07 / PILLAR</div><h3>GENSEN プラットフォーム利用権</h3><p>営業商材・集客ツール・サービスの利用／紹介が可能。</p></div>
+  </div>
+</section>
+
+<!-- Courses -->
+<section id="courses">
+  <div class="sec-head reveal">
+    <div class="sec-label">02 / COURSES</div>
+    <h2 class="sec-title">提供する<span class="gold">講座・教材</span>一覧</h2>
+    <p style="color:#b8b3a3;font-size:14px">※「何が学べるのか」を第三者が理解できるように明確化</p>
+  </div>
+
+  <div class="course-block reveal">
+    <h3>● ビジネス開脳講座（山本提供）</h3>
+    <ul>
+      <li>マインドマップ構造化講座（動画）</li>
+      <li>ビジネスモデルの作り方</li>
+      <li>市場分析・競合分析</li>
+      <li>戦略・戦術の描き方</li>
+      <li>事業構築のリアルケーススタディ</li>
+      <li>成長フェーズ別の打ち手事例（1億円/10億円ロードマップ）</li>
+    </ul>
+  </div>
+
+  <div class="course-block reveal">
+    <h3>● マーケティング講座</h3>
+    <p>（外部講師のコンテンツも含む）</p>
+    <ul>
+      <li>デジタルマーケティング</li>
+      <li>アナログマーケ</li>
+      <li>広告運用の基礎</li>
+      <li>顧客心理と販売導線</li>
+      <li>実店舗／オンラインの集客基礎</li>
+    </ul>
+  </div>
+
+  <div class="course-block reveal">
+    <h3>● 集客講座（オンライン & オフライン）</h3>
+    <h4>ONLINE / オンライン</h4>
+    <ul>
+      <li>SNS広告</li><li>インフルエンサー施策</li><li>SEO／コンテンツ</li><li>Kindle集客</li>
+    </ul>
+    <h4>OFFLINE / オフライン</h4>
+    <ul>
+      <li>チラシ</li><li>ポスティング</li><li>ビラ配布</li>
+    </ul>
+    <h4>SALES / 営業戦略</h4>
+    <ul>
+      <li>テレアポ</li><li>フォーム営業</li><li>SNS営業</li><li>メール営業</li>
+      <li>FAXDM</li><li>郵送DM</li><li>同梱物営業</li><li>ニュースレター営業</li>
+    </ul>
+  </div>
+
+  <div class="course-block reveal">
+    <h3>● SNS構築講座</h3>
+    <p>各SNSごとに専門講師が担当。</p>
+    <ul>
+      <li>Instagram</li><li>TikTok</li><li>YouTube</li>
+      <li>Facebook</li><li>LinkedIn</li><li>音声配信（Voicy等）</li>
+    </ul>
+  </div>
+
+  <div class="course-block reveal">
+    <h3>● AI講座</h3>
+    <ul>
+      <li>生成AI活用</li>
+      <li>業務効率化</li>
+      <li>AIを活用した事業構築</li>
+    </ul>
+  </div>
+</section>
+
+<!-- GENSEN -->
+<section id="gensen">
+  <div class="sec-head reveal">
+    <div class="sec-label">03 / GENSEN</div>
+    <h2 class="sec-title"><span class="gold">GENSEN</span>｜サービス内容</h2>
+  </div>
+
+  <div class="reveal">
+    <h3 style="color:var(--gold-light);font-size:20px;margin-bottom:14px">【GENSENとは？】</h3>
+    <p class="gensen-lead">
+      GENSENは、<br>
+      "売れる商品"と"売るための仕組み"をまとめて提供するビジネスプラットフォームです。<br>
+      ビジネス開脳アカデミーの会員は、GENSEN内のサービスを 追加費用なし で利用できます。
+    </p>
+  </div>
+
+  <div class="reveal">
+    <h3 style="color:var(--gold-light);font-size:20px;margin:40px 0 20px">【GENSENでできる主なこと】</h3>
+    <div class="gensen-grid">
+      <div class="gensen-card">
+        <h4>① 売りやすい商材を"そのまま販売できる"</h4>
+        <p style="font-size:13px;color:#b8b3a3;margin-bottom:12px">初心者でも扱いやすい、成果の出やすい商材をラインナップ。</p>
+        <ul>
+          <li>口コミ365（店舗向けGoogleマップ強化）</li>
+          <li>バズ抜きくん（SNS露出向上）</li>
+          <li>商談プロ（営業効率化ツール）</li>
+          <li>AI社長（AI経営支援ツール）</li>
+          <li>ブランド修理サービス</li>
+          <li>車の売買紹介</li>
+        </ul>
+        <p style="font-size:12px;color:#8a8373;margin-top:14px">※クロージング不要。興味を持っている人をトスアップ（お繋ぎ）いただくだけで OK。</p>
+      </div>
+      <div class="gensen-card">
+        <h4>② 紹介で収益が発生する"紹介型モデル"</h4>
+        <p style="font-size:13px;color:#b8b3a3">商材を紹介 → 契約 → 報酬発生。<br>難しいスキルは不要で、名刺交換レベルの軽い接点でも収益化が可能。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal">
+    <h3 style="color:var(--gold-light);font-size:20px;margin:40px 0 20px">【GENSENを使うメリット】</h3>
+    <ul style="list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px">
+      <li style="padding:16px 20px;background:rgba(212,175,55,.05);border-left:2px solid var(--gold);font-size:14px">■ 営業経験がなくても売れる（商材説明セット完備）</li>
+      <li style="padding:16px 20px;background:rgba(212,175,55,.05);border-left:2px solid var(--gold);font-size:14px">■ 紹介だけで収益が作れる</li>
+      <li style="padding:16px 20px;background:rgba(212,175,55,.05);border-left:2px solid var(--gold);font-size:14px">■ 自分の商品がなくてもビジネスが成立する</li>
+      <li style="padding:16px 20px;background:rgba(212,175,55,.05);border-left:2px solid var(--gold);font-size:14px">■ 商材が随時追加され、武器が増え続ける</li>
+      <li style="padding:16px 20px;background:rgba(212,175,55,.05);border-left:2px solid var(--gold);font-size:14px">■ アカデミー会費内に含まれ追加負担なし</li>
+    </ul>
+    <p style="margin-top:24px;padding:20px;background:rgba(212,175,55,.04);border-left:3px solid var(--gold);font-size:14px;color:#c9c4b5">
+      GENSENは、<br>
+      「ビジネスを始めたいのに何を売ればいいかわからない」<br>
+      「ビジネスを始めているけど他社と差別化した商品を持っていない」<br>
+      という人の悩みを一気に解消するサービスです。
+    </p>
+  </div>
+</section>
+
+<!-- Growth -->
+<section>
+  <div class="sec-head reveal">
+    <div class="sec-label">04 / GROWTH</div>
+    <h2 class="sec-title">得られる<span class="gold">成長</span></h2>
+    <p style="color:#b8b3a3;font-size:14px">第三者が見て「何ができるようになるか」が明確になるよう整理。</p>
+  </div>
+
+  <div class="growth-list">
+    <div class="growth-item reveal"><div><h3>自分のビジネス・業務を"構造化"して考えられるようになる</h3><p>マインドマップにより、戦略・課題・施策を可視化し、意思決定の質が向上。</p></div></div>
+    <div class="growth-item reveal"><div><h3>集客とマーケティングが理解できる</h3><p>どんなビジネスでも必要な「集める力」を習得。</p></div></div>
+    <div class="growth-item reveal"><div><h3>SNSで情報発信ができるようになる</h3><p>ゼロからでもフォロワーを増やせる運用の型が学べる。</p></div></div>
+    <div class="growth-item reveal"><div><h3>AIを業務に組み込める</h3><p>時短・効率化・自動化が標準化する。</p></div></div>
+    <div class="growth-item reveal"><div><h3>営業・提案の引き出しが増える</h3><p>プッシュ型営業〜顧客教育まで体系的に理解。</p></div></div>
+    <div class="growth-item reveal"><div><h3>最新の事業事例を毎月アップデートできる</h3><p>ライブ講義で"今の市場"に合った学びに更新され続ける。</p></div></div>
+    <div class="growth-item reveal"><div><h3>コミュニティで横のつながりができる</h3><p>経営者・ビジネスパーソンとの交流が成果を加速させる。</p></div></div>
+  </div>
+</section>
+
+<!-- Schedule -->
+<section>
+  <div class="sec-head reveal">
+    <div class="sec-label">05 / SCHEDULE</div>
+    <h2 class="sec-title">月間<span class="gold">スケジュール</span>例</h2>
+  </div>
+
+  <div class="schedule">
+    <div class="sched-card reveal"><div class="icon">MONTHLY</div><h3>ライブ講義（60分）</h3><p>最新の事業戦略・事例の解説・質疑応答</p></div>
+    <div class="sched-card reveal"><div class="icon">MONTHLY</div><h3>ビジネスQ&A会（60分）</h3><p>メンバーの個別課題に直接回答</p></div>
+    <div class="sched-card reveal"><div class="icon">ANYTIME</div><h3>録画教材（1000本以上）</h3><p>マインドマップ、SNS、集客、マーケ講座など</p></div>
+    <div class="sched-card reveal"><div class="icon">MONTHLY</div><h3>リアル懇親会</h3><p>交流・相談・協業の機会</p></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="sec-head reveal">
+    <div class="sec-label">06 / FAQ</div>
+    <h2 class="sec-title">よくある<span class="gold">質問</span></h2>
+  </div>
+
+  <div class="faq-item reveal">
+    <div class="faq-q">Q1. 対象者は誰ですか？</div>
+    <div class="faq-a"><p>経営者・個人事業主・会社員・副業・フリーランスなど、ビジネスに関わる全ての方が対象です。</p></div>
+  </div>
+  <div class="faq-item reveal">
+    <div class="faq-q">Q2. 専門知識がなくても大丈夫？</div>
+    <div class="faq-a"><p>初心者でも理解できる動画構成になっています。</p></div>
+  </div>
+  <div class="faq-item reveal">
+    <div class="faq-q">Q3. リアル参加が必須ですか？</div>
+    <div class="faq-a"><p>懇親会は任意。講義はオンラインで参加可能、アーカイブもあり。</p></div>
+  </div>
+</section>
+
+<!-- Pricing -->
+<section id="pricing">
+  <div class="sec-head reveal">
+    <div class="sec-label">07 / PRICING</div>
+    <h2 class="sec-title"><span class="gold">料金</span>プラン</h2>
+  </div>
+
+  <div class="pricing-box reveal bracket">
+    <div class="label">ANNUAL MEMBERSHIP</div>
+    <div class="price">¥200,000<small>/年(税抜)</small></div>
+    <p class="pricing-note">※1契約につき1名様でご参加ください。</p>
+
+    <h4 style="color:var(--gold-light);margin:30px 0 16px;font-size:14px;letter-spacing:3px;font-family:'Orbitron',sans-serif">料金に含まれるもの</h4>
+    <ul class="include-list">
+      <li>全講座・教材の閲覧</li>
+      <li>月1回ライブ講義</li>
+      <li>月1回Q&A会</li>
+      <li>マインドマップ講座（録画）</li>
+      <li>壁打ち動画の視聴</li>
+      <li>SNS講座・集客講座・マーケ講座</li>
+      <li>AI講座</li>
+      <li>GENSENプラットフォーム利用</li>
+      <li>懇親会参加権</li>
+    </ul>
+
+    <a href="https://utage-system.com/p/OFxxUfw4fRpr" class="btn-cyber" style="margin-top:20px">今すぐ申し込む</a>
+    <p style="font-size:11px;color:#8a8373;margin-top:14px">ご決済ページへ移動します。</p>
+  </div>
+</section>
+
+<!-- Profile -->
+<section id="profile">
+  <div class="sec-head reveal">
+    <div class="sec-label">08 / PROFILE</div>
+    <h2 class="sec-title"><span class="gold">PROFILE</span></h2>
+  </div>
+
+  <div class="profile-head reveal">
+    <div>
+      <div class="profile-name">山本 智也</div>
+      <div class="profile-en">TOMOYA YAMAMOTO</div>
+    </div>
+    <div class="profile-tag">年商40億・200案件を動かす<br>"ビジネスサイボーグ"。</div>
+  </div>
+
+  <div class="profile-bio reveal">
+    <p>自己成長のためにリアルバリュークラブへ1,000万円、入江×ヒカル顧問制度へ6,000万円を投資。事業の可視化と戦略構築を武器に、伸びる事業を最短で伸ばすプロデューサー。</p>
+
+    <h4>■ 事業の「成長」を請け負う存在。</h4>
+    <p>数多くの企業・起業家・インフルエンサーの参謀として、短期で業績を跳ね上げる"事業成長請負人"。商品企画、マーケティング、ブランディング、販売導線、出版、コミュニティ、資金調達まで、事業全体を統合的にプロデュースする実行型ストラテジスト。</p>
+
+    <h4>【主な実績】</h4>
+
+    <p><strong>■ ハンドスピナー事業</strong></p>
+    <ul>
+      <li>参画後4ヶ月で売上3億円</li>
+      <li>メディア出演100回以上</li>
+      <li>短期間で市場シェアを獲得</li>
+    </ul>
+
+    <p><strong>■ スマホケースブランド「WAYLLY」立ち上げ</strong></p>
+    <ul>
+      <li>レッドオーシャン市場で3年で業界No.2へ</li>
+      <li>Instagramの自撮り文化を定着させるムーブメントを創出</li>
+      <li>ブランド構築〜売却まで成功</li>
+    </ul>
+
+    <p><strong>■ 資産運用コミュニティ</strong></p>
+    <ul>
+      <li>わずか2年で売上20億円超</li>
+      <li>教育体系、マーケ導線、組織化まで一気通貫で支援</li>
+    </ul>
+
+    <p><strong>■ インフルエンサー×出版マーケティング</strong></p>
+    <ul>
+      <li>100名以上のインフルエンサーを支援</li>
+      <li>書籍を起点とした累計売上は100億円超</li>
+      <li>出版×マーケティングのハイブリッドモデルを構築</li>
+    </ul>
+
+    <p><strong>■ ベンチャー投資枠の資金調達</strong></p>
+    <ul>
+      <li>投資枠3億円を1週間で満額調達</li>
+    </ul>
+
+    <p><strong>■ 整体技術継承プロジェクト</strong></p>
+    <ul>
+      <li>関節に着目した整体技術をプロデュースし、初年度売上5億円</li>
+      <li>3年で100億円規模へ成長見込み</li>
+      <li>ブランディング、講座構築、サロン展開まで担当</li>
+    </ul>
+
+    <p><strong>■ 広告代理店の立ち上げ支援</strong></p>
+    <ul>
+      <li>動画広告を中心とした広告代理店の立ち上げを担当。月間広告運用額300万円から、約2億円まで伸ばす。2027年IPO準備中。</li>
+    </ul>
+
+    <p><strong>■ 多業種の事業支援</strong></p>
+    <ul>
+      <li>耐震診断、太陽光、蓄電池、相続、不動産、介護など</li>
+      <li>幅広い分野で事業立ち上げ、マーケティング、組織構築を支援</li>
+      <li>「あらゆるジャンルで結果を出す請負人」として評価される</li>
+    </ul>
+
+    <h4>【選ばれる理由】</h4>
+    <ul>
+      <li>短期で売れる"事業成長の型"を持っている</li>
+      <li>商品企画から資金調達までワンストップで構築できる</li>
+      <li>複数事業を同時に伸ばすスピードと再現性</li>
+      <li>裏方として徹底して支える姿勢</li>
+      <li>「事業成長の裏には山本あり」と言われる実行力</li>
+      <li>強い人脈(それぞれの分野のプロフェッショナル)</li>
+    </ul>
+
+    <h4>【コンセプト】</h4>
+    <p style="padding:24px;background:rgba(212,175,55,.05);border-left:3px solid var(--gold);margin-top:14px">
+      <strong>"事業成長請負人"</strong><br>
+      短期で事業を伸ばす、影のプロデューサー。<br>
+      ──山本が入ると、事業が伸びる。
+    </p>
+  </div>
+</section>
+
+<!-- Final CTA -->
+<section style="text-align:center;padding:100px 40px">
+  <div class="reveal">
+    <div class="sec-label">READY TO START</div>
+    <h2 class="sec-title" style="margin:20px 0 40px">
+      <span class="gold">事業成長</span>の<br>最前線へ。
+    </h2>
+    <a href="#pricing" class="btn-cyber">今すぐ申し込む</a>
+  </div>
+</section>
+
+<footer>
+  <div class="fname">BUSINESS KAINOU ACADEMY</div>
+  <div class="links">
+    <a href="https://utage-system.com/p/SyR5Q9oZovaj">特定商取引法に基づく表記</a>|
+    <a href="https://utage-system.com/p/Vk9kqKzgQjhm">プライバシーポリシー</a>
+  </div>
+  <div class="copy">Copyright © Business Kainou Academy. All Rights Reserved.</div>
+</footer>
+
+<script>
+// Reveal on scroll
+const io=new IntersectionObserver(es=>{
+  es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}});
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// FAQ toggle
+document.querySelectorAll('.faq-q').forEach(q=>{
+  q.addEventListener('click',()=>q.parentElement.classList.toggle('open'));
+});
+
+// Nav bg on scroll
+const nav=document.querySelector('nav');
+window.addEventListener('scroll',()=>{
+  if(window.scrollY>50)nav.style.background='rgba(5,5,5,.9)';
+  else nav.style.background='rgba(5,5,5,.65)';
+});
+</script>
+</body>
+</html>
