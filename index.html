@@ -29,6 +29,18 @@ body{
   position:relative;
 }
 
+/* Global subtle grid overlay (shown through all transparent sections) */
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  background:
+    linear-gradient(rgba(212,175,55,.05) 1px,transparent 1px) 0 0/50px 50px,
+    linear-gradient(90deg,rgba(212,175,55,.05) 1px,transparent 1px) 0 0/50px 50px;
+  pointer-events:none;
+  z-index:0;
+}
+
 /* Scanline overlay */
 body::after{
   content:'';
@@ -376,11 +388,7 @@ section{
 .pillar{
   position:relative;
   padding:32px 28px;
-  background:
-    linear-gradient(rgba(212,175,55,.05) 1px,transparent 1px) 0 0/40px 40px,
-    linear-gradient(90deg,rgba(212,175,55,.05) 1px,transparent 1px) 0 0/40px 40px,
-    linear-gradient(135deg,rgba(212,175,55,.04),rgba(0,0,0,.5)),
-    #050505;
+  background:linear-gradient(135deg,rgba(212,175,55,.04),rgba(0,0,0,.4));
   border:1px solid var(--line);
   clip-path:polygon(20px 0,100% 0,100% calc(100% - 20px),calc(100% - 20px) 100%,0 100%,0 20px);
   transition:transform .4s,border-color .4s,box-shadow .4s;
