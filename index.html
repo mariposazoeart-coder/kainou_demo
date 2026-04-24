@@ -84,9 +84,24 @@ nav .cta:hover{
   position:relative;
   height:100vh;min-height:700px;
   overflow:hidden;
-  display:flex;align-items:flex-end;justify-content:center;
-  padding-bottom:60px;
   isolation:isolate;
+}
+.fv-text-top{
+  position:absolute;top:90px;left:0;right:0;
+  z-index:5;text-align:center;padding:0 20px;
+  opacity:0;transform:translateY(20px);
+  animation:fvBlockRise 1.5s ease 12.2s forwards;
+}
+.fv-text-bottom{
+  position:absolute;bottom:60px;left:0;right:0;
+  z-index:5;text-align:center;padding:0 20px;
+  opacity:0;transform:translateY(20px);
+  animation:fvBlockRise 1.5s ease 12.6s forwards;
+}
+@keyframes fvBlockRise{to{opacity:1;transform:translateY(0)}}
+@media(max-width:768px){
+  .fv-text-top{top:70px}
+  .fv-text-bottom{bottom:30px}
 }
 .fv-video{
   position:absolute;inset:0;
@@ -647,13 +662,16 @@ footer .copy{font-size:11px;color:#6a6456;margin-top:18px;letter-spacing:1px}
     </div>
   </div>
 
-  <div class="fv-text">
+  <div class="fv-text-top">
     <div class="fv-eyebrow">BUSINESS KAINOU ACADEMY</div>
     <h1>
       ビジネス戦闘力を鍛える<br>
       <span class="gold glitch" data-text="&quot;実践型&quot;アカデミー。">"実践型"アカデミー。</span>
     </h1>
     <p class="sub">経営者・個人事業主・ビジネスパーソンのための総合ビジネス学習＆実務支援プログラム。</p>
+  </div>
+
+  <div class="fv-text-bottom">
     <div class="tags">
       <span>思考力</span><span>マーケティング</span><span>集客</span><span>SNS</span><span>営業</span><span>AI</span><span>事業戦略</span>
     </div>
