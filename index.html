@@ -306,13 +306,10 @@ nav .cta:hover{
     linear-gradient(180deg,rgba(5,5,5,.2),rgba(5,5,5,.55));
 }
 
-/* Black band divider */
-.black-band{
-  position:relative;z-index:3;
-  width:100%;height:120px;
-  background:#000;
-  border-top:1px solid rgba(212,175,55,.25);
-  border-bottom:1px solid rgba(212,175,55,.25);
+/* Solid black wrapper for content below About */
+.solid-black-bg{
+  position:relative;z-index:2;
+  background:#050505;
 }
 
 /* Sections */
@@ -632,7 +629,10 @@ footer .copy{font-size:11px;color:#6a6456;margin-top:18px;letter-spacing:1px}
 
 /* Mobile */
 @media(max-width:768px){
-  .fv-trio img{margin:0 -25px}
+  .fv-char{height:46%;max-height:360px}
+  .fv-char.main{height:52%;max-height:400px}
+  .fv-char.lady{left:74%}
+  .fv-char.man{left:26%}
   .profile-name{font-size:32px;letter-spacing:3px}
   .growth-item{flex-direction:column;gap:8px}
   .pricing-box{padding:40px 24px}
@@ -706,7 +706,7 @@ footer .copy{font-size:11px;color:#6a6456;margin-top:18px;letter-spacing:1px}
   </div>
 </section>
 
-<div class="black-band"></div>
+<div class="solid-black-bg">
 
 <section style="padding-top:80px">
   <div class="pillars">
@@ -1033,6 +1033,8 @@ footer .copy{font-size:11px;color:#6a6456;margin-top:18px;letter-spacing:1px}
     <a href="#pricing" class="btn-cyber">今すぐ申し込む</a>
   </div>
 </section>
+
+</div><!-- /solid-black-bg -->
 
 <footer>
   <div class="fname">BUSINESS KAINOU ACADEMY</div>
