@@ -214,8 +214,8 @@ nav .cta:hover{
 .fv h1{
   font-family:'Noto Sans JP',sans-serif;
   font-weight:900;
-  font-size:clamp(28px,5.5vw,64px);
-  line-height:1.35;
+  font-size:clamp(24px,4vw,46px);
+  line-height:1.4;
   margin-bottom:28px;
   letter-spacing:.05em;
 }
@@ -231,10 +231,15 @@ nav .cta:hover{
   50%{background-position:100% 50%}
 }
 .fv .sub{
-  font-size:clamp(12px,1.4vw,16px);
-  color:#b8b3a3;
+  font-size:clamp(14px,1.4vw,18px);
+  color:#d4cfbf;
   margin-bottom:36px;
   letter-spacing:.1em;
+  text-shadow:
+    0 0 14px rgba(0,0,0,.98),
+    0 0 28px rgba(0,0,0,.92),
+    0 0 42px rgba(0,0,0,.7),
+    0 2px 4px rgba(0,0,0,.95);
 }
 .fv .tags{
   display:flex;flex-wrap:wrap;justify-content:center;gap:10px;
@@ -483,7 +488,7 @@ section{
   margin-bottom:14px;color:var(--gold-light);
   line-height:1.5;
 }
-.pillar p{font-size:14px;color:#c9c4b5;line-height:1.8}
+.pillar p{font-size:16px;color:#c9c4b5;line-height:1.8}
 @media(max-width:768px){
   .pillars-viewport{margin:30px -20px 0}
   .pillars-track{--card-w:240px}
@@ -549,7 +554,7 @@ section{
   color:var(--gold-light);font-size:17px;margin-bottom:14px;font-weight:700;
 }
 .gensen-card ul{list-style:none}
-.gensen-card li{padding:6px 0 6px 20px;position:relative;font-size:14px;color:#c9c4b5}
+.gensen-card li{padding:6px 0 6px 20px;position:relative;font-size:16px;color:#c9c4b5}
 .gensen-card li::before{
   content:'▸';position:absolute;left:0;color:var(--gold);
 }
@@ -590,7 +595,7 @@ section{
   line-height:1;
 }
 .growth-item h3{font-size:17px;color:var(--gold-light);margin-bottom:8px;font-weight:700}
-.growth-item p{font-size:14px;color:#b8b3a3}
+.growth-item p{font-size:16px;color:#b8b3a3}
 
 /* Schedule */
 .schedule{
@@ -608,7 +613,7 @@ section{
   margin-bottom:12px;
 }
 .sched-card h3{color:var(--gold-light);font-size:18px;margin-bottom:10px}
-.sched-card p{font-size:13px;color:#b8b3a3}
+.sched-card p{font-size:15px;color:#b8b3a3}
 
 /* FAQ */
 .faq-item{
@@ -632,7 +637,7 @@ section{
 .faq-a{
   max-height:0;overflow:hidden;
   transition:max-height .5s ease,padding .5s ease;
-  padding:0 28px;color:#c9c4b5;font-size:14px;
+  padding:0 28px;color:#c9c4b5;font-size:16px;
 }
 .faq-item.open .faq-a{max-height:300px;padding:0 28px 22px}
 
@@ -670,7 +675,7 @@ section{
 }
 .include-list li{
   padding:10px 14px 10px 32px;position:relative;
-  font-size:13px;color:#c9c4b5;
+  font-size:15px;color:#c9c4b5;
   background:rgba(212,175,55,.05);
 }
 .include-list li::before{
@@ -693,14 +698,14 @@ section{
   font-size:22px;font-weight:900;color:var(--gold-light);
   margin:20px 0;
 }
-.profile-bio{font-size:15px;color:#c9c4b5;max-width:900px;margin:0 auto;text-align:left}
+.profile-bio{font-size:17px;color:#c9c4b5;max-width:900px;margin:0 auto;text-align:left}
 .profile-bio h4{
   font-size:18px;color:var(--gold-light);margin:30px 0 12px;
   padding-bottom:8px;border-bottom:1px solid var(--line);
 }
 .profile-bio ul{list-style:none;margin:10px 0 20px}
 .profile-bio li{
-  padding:8px 0 8px 24px;position:relative;font-size:14px;
+  padding:8px 0 8px 24px;position:relative;font-size:16px;
 }
 .profile-bio li::before{
   content:'▸';position:absolute;left:0;color:var(--gold);
@@ -810,7 +815,7 @@ footer .copy{font-size:11px;color:#6a6456;margin-top:18px;letter-spacing:1px}
     </h1>
     <p class="sub">経営者・個人事業主・ビジネスパーソンのための<br class="sp-br">総合ビジネス学習＆実務支援プログラム。</p>
     <div class="tags" style="margin-top:20px">
-      <span>思考力</span><span>マーケティング</span><span>集客</span><span>SNS</span><span>営業</span><span>AI</span><span>事業戦略</span>
+      <span>思考力（構造化・戦略設計）</span><span>マーケティング</span><span>集客</span><span>SNS活用</span><span>営業</span><span>AI活用</span><span>事業戦略・戦術</span>
     </div>
   </div>
 
@@ -828,7 +833,7 @@ footer .copy{font-size:11px;color:#6a6456;margin-top:18px;letter-spacing:1px}
   <div class="sec-head reveal">
     <div class="sec-label">01 / ABOUT</div>
     <h2 class="sec-title">ビジネス開脳<span class="gold">アカデミー</span>とは</h2>
-    <p style="max-width:780px;margin:0 auto;color:#c9c4b5;font-size:15px">
+    <p style="max-width:780px;margin:0 auto;color:#c9c4b5;font-size:17px">
       ビジネス開脳アカデミーは、<br>
       "ビジネスで成果を出すための思考力と実務スキル"を体系的に学べる学習プラットフォームです。<br><br>
       対象者は限定せず、<strong style="color:#fff;font-weight:700">経営者・ビジネスパーソン・副業・個人事業・社会人 を含む</strong>あらゆるビジネス従事者です。
