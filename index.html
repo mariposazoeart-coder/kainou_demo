@@ -407,15 +407,20 @@ section{
           mask-image:linear-gradient(90deg,transparent 0,#000 8%,#000 92%,transparent 100%);
 }
 .pillars-track{
+  --card-w:280px;
+  --card-gap:24px;
   display:flex;
-  gap:24px;
+  gap:var(--card-gap);
   width:max-content;
   animation:pillarSlide 50s linear infinite;
+  will-change:transform;
 }
-.pillars-viewport:hover .pillars-track{animation-play-state:paused}
+@media(hover:hover){
+  .pillars-viewport:hover .pillars-track{animation-play-state:paused}
+}
 @keyframes pillarSlide{
   0%{transform:translateX(0)}
-  100%{transform:translateX(-50%)}
+  100%{transform:translateX(calc((var(--card-w) + var(--card-gap)) * -7))}
 }
 .pillar{
   position:relative;
@@ -481,6 +486,7 @@ section{
 .pillar p{font-size:14px;color:#c9c4b5;line-height:1.8}
 @media(max-width:768px){
   .pillars-viewport{margin:30px -20px 0}
+  .pillars-track{--card-w:240px}
   .pillar{flex:0 0 240px;height:340px;padding:30px 22px}
   .pillar .num{font-size:40px;margin-bottom:18px;letter-spacing:3px}
   .pillar h3{font-size:17px}
@@ -824,7 +830,7 @@ footer .copy{font-size:11px;color:#6a6456;margin-top:18px;letter-spacing:1px}
     <p style="max-width:780px;margin:0 auto;color:#c9c4b5;font-size:15px">
       ビジネス開脳アカデミーは、<br>
       "ビジネスで成果を出すための思考力と実務スキル"を体系的に学べる学習プラットフォームです。<br><br>
-      対象者は限定せず、<strong style="color:#f4d77a;font-weight:700">経営者・ビジネスパーソン・副業・個人事業・社会人 を含む</strong>あらゆるビジネス従事者です。
+      対象者は限定せず、<strong style="color:#fff;font-weight:700">経営者・ビジネスパーソン・副業・個人事業・社会人 を含む</strong>あらゆるビジネス従事者です。
     </p>
   </div>
 </section>
