@@ -451,36 +451,7 @@ section{
   pointer-events:none;
   z-index:0;
 }
-.pillar::after{
-  content:'';
-  position:absolute;inset:0;
-  background:linear-gradient(115deg,
-    transparent 0%,
-    transparent 35%,
-    rgba(255,255,255,.05) 45%,
-    rgba(255,255,255,.4) 50%,
-    rgba(255,255,255,.05) 55%,
-    transparent 65%,
-    transparent 100%);
-  background-size:250% 100%;
-  background-position:200% 0;
-  pointer-events:none;
-  z-index:1;
-  mix-blend-mode:screen;
-  animation:shimmer 6s ease-in-out infinite;
-}
 .pillar > *{position:relative;z-index:2}
-.pillar:nth-child(7n+1)::after{animation-delay:0s}
-.pillar:nth-child(7n+2)::after{animation-delay:.7s}
-.pillar:nth-child(7n+3)::after{animation-delay:1.4s}
-.pillar:nth-child(7n+4)::after{animation-delay:2.1s}
-.pillar:nth-child(7n+5)::after{animation-delay:2.8s}
-.pillar:nth-child(7n+6)::after{animation-delay:3.5s}
-.pillar:nth-child(7n+7)::after{animation-delay:4.2s}
-@keyframes shimmer{
-  0%,18%{background-position:200% 0}
-  35%,100%{background-position:-100% 0}
-}
 .pillar:hover{
   transform:translateY(-6px);
   border-color:rgba(212,175,55,.6);
@@ -490,8 +461,8 @@ section{
     0 12px 40px rgba(212,175,55,.18);
 }
 .pillar .num{
-  font-family:'Share Tech Mono','Orbitron',monospace;
-  font-weight:400;
+  font-family:'Orbitron',sans-serif;
+  font-weight:900;
   font-size:48px;
   line-height:1;
   color:#fff;
