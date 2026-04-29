@@ -415,27 +415,25 @@ section{
 /* About - 7 pillars carousel */
 .pillars-viewport{
   position:relative;
-  overflow:hidden;
+  overflow-x:auto;
+  overflow-y:hidden;
   margin:40px -40px 0;
   padding:20px 0;
   -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 8%,#000 92%,transparent 100%);
           mask-image:linear-gradient(90deg,transparent 0,#000 8%,#000 92%,transparent 100%);
+  scrollbar-width:none;
+  -ms-overflow-style:none;
+  -webkit-overflow-scrolling:touch;
+  scroll-behavior:auto;
 }
+.pillars-viewport::-webkit-scrollbar{display:none}
 .pillars-track{
   --card-w:280px;
   --card-gap:24px;
   display:flex;
   gap:var(--card-gap);
   width:max-content;
-  animation:pillarSlide 50s linear infinite;
-  will-change:transform;
-}
-@media(hover:hover){
-  .pillars-viewport:hover .pillars-track{animation-play-state:paused}
-}
-@keyframes pillarSlide{
-  0%{transform:translateX(0)}
-  100%{transform:translateX(calc((var(--card-w) + var(--card-gap)) * -7))}
+  will-change:scroll-position;
 }
 .pillar{
   position:relative;
@@ -1219,6 +1217,43 @@ window.addEventListener('scroll',()=>{
   if(window.scrollY>50)nav.style.background='rgba(5,5,5,.9)';
   else nav.style.background='rgba(5,5,5,.65)';
 });
+
+// Pillars carousel — auto-scroll with touch/mouse pause & manual scrubbing
+(function(){
+  const vp=document.querySelector('.pillars-viewport');
+  const track=document.querySelector('.pillars-track');
+  if(!vp||!track)return;
+  let paused=false,resumeTimer=null,lastTs=0;
+  const SPEED=40; // px per second
+  const PAUSE_MS=2500;
+  function tick(ts){
+    if(!lastTs)lastTs=ts;
+    const dt=(ts-lastTs)/1000;lastTs=ts;
+    if(!paused){
+      vp.scrollLeft+=SPEED*dt;
+      const half=track.scrollWidth/2;
+      if(vp.scrollLeft>=half)vp.scrollLeft-=half;
+    }
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+  function pauseFor(ms){
+    paused=true;
+    clearTimeout(resumeTimer);
+    resumeTimer=setTimeout(()=>{paused=false;lastTs=0;},ms);
+  }
+  ['touchstart','mousedown','wheel'].forEach(ev=>vp.addEventListener(ev,()=>pauseFor(PAUSE_MS),{passive:true}));
+  vp.addEventListener('scroll',()=>{
+    if(!paused)return; // ignore self-driven scroll
+    pauseFor(PAUSE_MS); // keep extending pause while user scrolls
+  },{passive:true});
+  // Wrap manual scroll position so user-driven loop also stays seamless
+  vp.addEventListener('scroll',()=>{
+    const half=track.scrollWidth/2;
+    if(vp.scrollLeft>=half*2-10)vp.scrollLeft-=half;
+    else if(vp.scrollLeft<=2)vp.scrollLeft+=half;
+  },{passive:true});
+})();
 </script>
 </body>
 </html>
