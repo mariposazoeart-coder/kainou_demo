@@ -397,37 +397,64 @@ section{
 .bracket::before{top:-8px;left:-8px;border-right:none;border-bottom:none}
 .bracket::after{bottom:-8px;right:-8px;border-left:none;border-top:none}
 
-/* About - 7 pillars */
-.pillars{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+/* About - 7 pillars carousel */
+.pillars-viewport{
+  position:relative;
+  overflow:hidden;
+  margin:40px -40px 0;
+  padding:20px 0;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 8%,#000 92%,transparent 100%);
+          mask-image:linear-gradient(90deg,transparent 0,#000 8%,#000 92%,transparent 100%);
+}
+.pillars-track{
+  display:flex;
   gap:24px;
-  margin-top:40px;
+  width:max-content;
+  animation:pillarSlide 50s linear infinite;
+}
+.pillars-viewport:hover .pillars-track{animation-play-state:paused}
+@keyframes pillarSlide{
+  0%{transform:translateX(0)}
+  100%{transform:translateX(-50%)}
 }
 .pillar{
   position:relative;
-  padding:32px 28px;
-  background:linear-gradient(135deg,rgba(212,175,55,.04),rgba(0,0,0,.4));
+  flex:0 0 280px;
+  height:380px;
+  padding:36px 28px;
+  background:linear-gradient(160deg,rgba(212,175,55,.06),rgba(0,0,0,.55));
   border:1px solid var(--line);
   clip-path:polygon(20px 0,100% 0,100% calc(100% - 20px),calc(100% - 20px) 100%,0 100%,0 20px);
   transition:transform .4s,border-color .4s,box-shadow .4s;
+  display:flex;flex-direction:column;
 }
 .pillar:hover{
   transform:translateY(-6px);
   border-color:var(--gold);
-  box-shadow:0 10px 40px rgba(212,175,55,.15);
+  box-shadow:0 10px 40px rgba(212,175,55,.2);
 }
 .pillar .num{
   font-family:'Orbitron',sans-serif;
-  font-size:12px;color:var(--gold);
-  letter-spacing:4px;margin-bottom:14px;
+  font-weight:900;
+  font-size:64px;
+  line-height:1;
+  background:linear-gradient(135deg,var(--gold-light),var(--gold),var(--gold-dark));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  margin-bottom:22px;
+  letter-spacing:2px;
 }
 .pillar h3{
-  font-size:18px;font-weight:700;
+  font-size:19px;font-weight:700;
   margin-bottom:14px;color:var(--gold-light);
   line-height:1.5;
 }
 .pillar p{font-size:14px;color:#c9c4b5;line-height:1.8}
+@media(max-width:768px){
+  .pillars-viewport{margin:30px -20px 0}
+  .pillar{flex:0 0 240px;height:340px;padding:30px 22px}
+  .pillar .num{font-size:52px;margin-bottom:18px}
+  .pillar h3{font-size:17px}
+}
 
 /* Course list */
 .course-block{
@@ -767,20 +794,30 @@ footer .copy{font-size:11px;color:#6a6456;margin-top:18px;letter-spacing:1px}
     <p style="max-width:780px;margin:0 auto;color:#c9c4b5;font-size:15px">
       ビジネス開脳アカデミーは、<br>
       "ビジネスで成果を出すための思考力と実務スキル"を体系的に学べる学習プラットフォームです。<br><br>
-      対象者は限定せず、経営者・ビジネスパーソン・副業・個人事業・社会人 を含むあらゆるビジネス従事者です。
+      対象者は限定せず、<strong style="color:#f4d77a;font-weight:700">経営者・ビジネスパーソン・副業・個人事業・社会人 を含む</strong>あらゆるビジネス従事者です。
     </p>
   </div>
 </section>
 
 <section style="padding-top:20px">
-  <div class="pillars">
-    <div class="pillar reveal"><div class="num">01 / PILLAR</div><h3>ビジネス開脳スキルの習得</h3><p>マインドマップを使った「見える化・整理・戦略設計」を中心に、事業構築の"脳の使い方"を鍛える。</p></div>
-    <div class="pillar reveal"><div class="num">02 / PILLAR</div><h3>実務スキルの総合講座</h3><p>マーケティング・集客・SNS・AI・デザインなど、実際にビジネスで使うスキルを複数講師の教材で網羅。</p></div>
-    <div class="pillar reveal"><div class="num">03 / PILLAR</div><h3>月1回のライブ講義</h3><p>山本による「最新事業戦略＆事例共有」のライブ講義（生配信）。※アーカイブ視聴可能</p></div>
-    <div class="pillar reveal"><div class="num">04 / PILLAR</div><h3>月1回のビジネスQ&A会</h3><p>メンバーの質問に回答し、実際の事業に落とし込む"実践型フィードバック"。</p></div>
-    <div class="pillar reveal"><div class="num">05 / PILLAR</div><h3>山本の壁打ち現場の見学（動画）</h3><p>1回60分・30万円で提供しているビジネス壁打ちコンサルを共有し、リアルな思考法・分析・課題解決プロセスを学べる。</p></div>
-    <div class="pillar reveal"><div class="num">06 / PILLAR</div><h3>東京リアル懇親会（月1回）</h3><p>メンバー同士、そして山本と直接交流できるリアルコミュニティ。</p></div>
-    <div class="pillar reveal"><div class="num">07 / PILLAR</div><h3>GENSEN プラットフォーム利用権</h3><p>営業商材・集客ツール・サービスの利用／紹介が可能。</p></div>
+  <div class="pillars-viewport reveal">
+    <div class="pillars-track">
+      <div class="pillar"><div class="num">01</div><h3>ビジネス開脳スキルの習得</h3><p>マインドマップを使った「見える化・整理・戦略設計」を中心に、事業構築の"脳の使い方"を鍛える。</p></div>
+      <div class="pillar"><div class="num">02</div><h3>実務スキルの総合講座</h3><p>マーケティング・集客・SNS・AI・デザインなど、実際にビジネスで使うスキルを複数講師の教材で網羅。</p></div>
+      <div class="pillar"><div class="num">03</div><h3>月1回のライブ講義</h3><p>山本による「最新事業戦略＆事例共有」のライブ講義（生配信）。※アーカイブ視聴可能</p></div>
+      <div class="pillar"><div class="num">04</div><h3>月1回のビジネスQ&A会</h3><p>メンバーの質問に回答し、実際の事業に落とし込む"実践型フィードバック"。</p></div>
+      <div class="pillar"><div class="num">05</div><h3>山本の壁打ち現場の見学（動画）</h3><p>1回60分・30万円で提供しているビジネス壁打ちコンサルを共有し、リアルな思考法・分析・課題解決プロセスを学べる。</p></div>
+      <div class="pillar"><div class="num">06</div><h3>東京リアル懇親会（月1回）</h3><p>メンバー同士、そして山本と直接交流できるリアルコミュニティ。</p></div>
+      <div class="pillar"><div class="num">07</div><h3>GENSEN プラットフォーム利用権</h3><p>営業商材・集客ツール・サービスの利用／紹介が可能。</p></div>
+      <!-- duplicate set for seamless loop -->
+      <div class="pillar" aria-hidden="true"><div class="num">01</div><h3>ビジネス開脳スキルの習得</h3><p>マインドマップを使った「見える化・整理・戦略設計」を中心に、事業構築の"脳の使い方"を鍛える。</p></div>
+      <div class="pillar" aria-hidden="true"><div class="num">02</div><h3>実務スキルの総合講座</h3><p>マーケティング・集客・SNS・AI・デザインなど、実際にビジネスで使うスキルを複数講師の教材で網羅。</p></div>
+      <div class="pillar" aria-hidden="true"><div class="num">03</div><h3>月1回のライブ講義</h3><p>山本による「最新事業戦略＆事例共有」のライブ講義（生配信）。※アーカイブ視聴可能</p></div>
+      <div class="pillar" aria-hidden="true"><div class="num">04</div><h3>月1回のビジネスQ&A会</h3><p>メンバーの質問に回答し、実際の事業に落とし込む"実践型フィードバック"。</p></div>
+      <div class="pillar" aria-hidden="true"><div class="num">05</div><h3>山本の壁打ち現場の見学（動画）</h3><p>1回60分・30万円で提供しているビジネス壁打ちコンサルを共有し、リアルな思考法・分析・課題解決プロセスを学べる。</p></div>
+      <div class="pillar" aria-hidden="true"><div class="num">06</div><h3>東京リアル懇親会（月1回）</h3><p>メンバー同士、そして山本と直接交流できるリアルコミュニティ。</p></div>
+      <div class="pillar" aria-hidden="true"><div class="num">07</div><h3>GENSEN プラットフォーム利用権</h3><p>営業商材・集客ツール・サービスの利用／紹介が可能。</p></div>
+    </div>
   </div>
 </section>
 
