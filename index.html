@@ -337,11 +337,11 @@ nav .cta:hover{
 /* Full-width solid black bg behind About intro */
 .about-intro{
   position:relative;
-  padding-bottom:8px;
+  padding-bottom:4px;
 }
 .about-intro .sec-head{
-  padding-bottom:24px;
-  margin-bottom:14px;
+  padding-bottom:14px;
+  margin-bottom:6px;
 }
 .about-intro::before{
   content:'';
@@ -421,8 +421,8 @@ section{
   position:relative;
   overflow-x:auto;
   overflow-y:hidden;
-  margin:8px -40px 0;
-  padding:6px 0;
+  margin:4px -40px 0;
+  padding:4px 0;
   -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 8%,#000 92%,transparent 100%);
           mask-image:linear-gradient(90deg,transparent 0,#000 8%,#000 92%,transparent 100%);
   scrollbar-width:none;
@@ -432,8 +432,8 @@ section{
 }
 .pillars-viewport::-webkit-scrollbar{display:none}
 .pillars-track{
-  --card-w:230px;
-  --card-gap:20px;
+  --card-w:280px;
+  --card-gap:24px;
   display:flex;
   gap:var(--card-gap);
   width:max-content;
@@ -441,22 +441,24 @@ section{
 }
 .pillar{
   position:relative;
-  flex:0 0 230px;
-  height:310px;
-  padding:28px 22px;
+  flex:0 0 280px;
+  height:380px;
+  padding:36px 28px;
   background:
     linear-gradient(135deg,
-      rgba(255,255,255,.10) 0%,
-      rgba(255,255,255,.03) 45%,
-      rgba(255,255,255,.06) 100%);
-  -webkit-backdrop-filter:blur(12px) saturate(1.2);
-          backdrop-filter:blur(12px) saturate(1.2);
-  border:1px solid rgba(255,255,255,.18);
+      #2a2a2a 0%,
+      #181818 18%,
+      #303030 38%,
+      #1a1a1a 52%,
+      #2c2c2c 70%,
+      #161616 86%,
+      #242424 100%);
+  border:1px solid rgba(255,255,255,.08);
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.25),
-    inset 0 -1px 0 rgba(0,0,0,.25),
-    0 8px 24px rgba(0,0,0,.45);
-  clip-path:polygon(16px 0,100% 0,100% calc(100% - 16px),calc(100% - 16px) 100%,0 100%,0 16px);
+    inset 0 1px 0 rgba(255,255,255,.08),
+    inset 0 -1px 0 rgba(0,0,0,.4),
+    0 4px 16px rgba(0,0,0,.5);
+  clip-path:polygon(20px 0,100% 0,100% calc(100% - 20px),calc(100% - 20px) 100%,0 100%,0 20px);
   transition:transform .4s,border-color .4s,box-shadow .4s;
   display:flex;flex-direction:column;
   overflow:hidden;
@@ -465,31 +467,33 @@ section{
 .pillar::before{
   content:'';
   position:absolute;inset:0;
-  background:linear-gradient(160deg,rgba(255,255,255,.18) 0%,transparent 38%);
+  background:repeating-linear-gradient(135deg,
+    rgba(255,255,255,.015) 0 1px,
+    transparent 1px 3px);
   pointer-events:none;
   z-index:0;
 }
 .pillar > *{position:relative;z-index:2}
 .pillar:hover{
   transform:translateY(-6px);
-  border-color:rgba(212,175,55,.65);
+  border-color:rgba(212,175,55,.6);
   box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.35),
-    inset 0 -1px 0 rgba(0,0,0,.3),
-    0 14px 36px rgba(212,175,55,.18);
+    inset 0 1px 0 rgba(255,255,255,.12),
+    inset 0 -1px 0 rgba(0,0,0,.4),
+    0 12px 40px rgba(212,175,55,.18);
 }
 .pillar .num{
   font-family:'Orbitron',sans-serif;
   font-weight:900;
-  font-size:32px;
+  font-size:48px;
   line-height:1;
   color:#fff;
   text-shadow:
-    0 0 10px rgba(255,255,255,.45),
-    0 0 22px rgba(255,255,255,.2),
-    0 2px 4px rgba(0,0,0,.7);
-  margin-bottom:16px;
-  letter-spacing:3px;
+    0 0 8px rgba(255,255,255,.4),
+    0 0 18px rgba(255,255,255,.15),
+    0 2px 4px rgba(0,0,0,.6);
+  margin-bottom:22px;
+  letter-spacing:4px;
 }
 .pillar h3{
   font-size:19px;font-weight:700;
@@ -500,10 +504,10 @@ section{
 @media(max-width:768px){
   .about-intro .sec-title{font-size:clamp(22px,6.8vw,28px);letter-spacing:0;white-space:nowrap}
   .pillars-viewport{margin:30px -20px 0}
-  .pillars-track{--card-w:200px}
-  .pillar{flex:0 0 200px;height:280px;padding:24px 18px}
-  .pillar .num{font-size:26px;margin-bottom:14px;letter-spacing:2px}
-  .pillar h3{font-size:16px}
+  .pillars-track{--card-w:240px}
+  .pillar{flex:0 0 240px;height:340px;padding:30px 22px}
+  .pillar .num{font-size:40px;margin-bottom:18px;letter-spacing:3px}
+  .pillar h3{font-size:17px}
 }
 
 /* Course list */
@@ -853,7 +857,7 @@ footer .copy{font-size:11px;color:#6a6456;margin-top:18px;letter-spacing:1px}
   </div>
 </section>
 
-<section style="padding-top:6px;padding-bottom:30px">
+<section style="padding-top:6px;padding-bottom:20px">
   <div class="pillars-viewport reveal">
     <div class="pillars-track">
       <div class="pillar"><div class="num">01</div><h3>ビジネス開脳スキルの習得</h3><p>マインドマップを使った「見える化・整理・戦略設計」を中心に、事業構築の"脳の使い方"を鍛える。</p></div>
@@ -876,7 +880,7 @@ footer .copy{font-size:11px;color:#6a6456;margin-top:18px;letter-spacing:1px}
 </section>
 
 <!-- Courses -->
-<section id="courses">
+<section id="courses" style="padding-top:60px">
   <div class="sec-head reveal">
     <div class="sec-label">02 / COURSES</div>
     <h2 class="sec-title">提供する<span class="gold">講座・教材</span>一覧</h2>
@@ -944,7 +948,7 @@ footer .copy{font-size:11px;color:#6a6456;margin-top:18px;letter-spacing:1px}
 </section>
 
 <!-- GENSEN -->
-<section id="gensen" style="padding-top:50px">
+<section id="gensen">
   <div class="sec-head reveal">
     <div class="sec-label">03 / GENSEN</div>
     <h2 class="sec-title"><span class="gold">GENSEN</span>｜サービス内容</h2>
