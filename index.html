@@ -704,6 +704,19 @@ section{
   display:grid;grid-template-columns:1fr;
   gap:30px;margin-bottom:50px;text-align:center;
 }
+.profile-photo{
+  width:200px;
+  aspect-ratio:4/5;
+  margin:0 auto 14px;
+  background:linear-gradient(135deg,rgba(255,255,255,.05),rgba(255,255,255,.02));
+  border:1px solid rgba(212,175,55,.35);
+  display:flex;align-items:center;justify-content:center;
+  color:rgba(212,175,55,.5);
+  font-family:'Orbitron',sans-serif;
+  font-size:12px;letter-spacing:6px;
+  clip-path:polygon(12px 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%,0 12px);
+  background-size:cover;background-position:center;
+}
 .profile-name{
   font-family:'Cinzel',serif;font-size:48px;font-weight:900;
   background:linear-gradient(135deg,var(--gold-light),var(--gold));
@@ -1100,6 +1113,9 @@ footer .copy{font-size:11px;color:#6a6456;margin-top:18px;letter-spacing:1px}
   </div>
 
   <div class="profile-head reveal">
+    <div class="profile-photo" aria-label="profile photo placeholder">
+      <span>PHOTO</span>
+    </div>
     <div>
       <div class="profile-name">山本 智也</div>
       <div class="profile-en">TOMOYA YAMAMOTO</div>
