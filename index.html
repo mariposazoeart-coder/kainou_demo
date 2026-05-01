@@ -596,6 +596,7 @@ section{
   display:grid;gap:18px;counter-reset:g;
 }
 .growth-item{
+  position:relative;
   display:flex;gap:24px;align-items:flex-start;
   padding:28px;border:1px solid var(--line);
   background:linear-gradient(90deg,rgba(5,5,5,.7),rgba(5,5,5,.45));
@@ -640,7 +641,23 @@ section{
 .growth-item h3{font-size:17px;color:var(--gold-light);margin-bottom:8px;font-weight:700}
 .growth-item p{font-size:16px;color:#b8b3a3}
 @media(max-width:768px){
-  .growth-icon{width:48px;height:48px;margin-right:0}
+  .growth-item{padding-top:38px}
+  .growth-icon{
+    position:absolute;
+    top:-22px;right:20px;
+    width:48px;height:48px;
+    margin-right:0;
+    padding:11px;
+    box-sizing:border-box;
+    border:1px solid rgba(212,175,55,.55);
+    background:rgba(5,5,5,.85);
+    -webkit-backdrop-filter:blur(6px);
+            backdrop-filter:blur(6px);
+    border-radius:50%;
+    box-shadow:0 4px 14px rgba(0,0,0,.5);
+    opacity:1;
+    color:var(--gold-light);
+  }
 }
 
 /* Schedule */
