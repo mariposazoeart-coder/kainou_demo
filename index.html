@@ -541,9 +541,10 @@ section{
 
 /* GENSEN */
 .gensen-lead{
-  font-size:16px;color:#c9c4b5;margin-bottom:30px;
-  padding:24px;background:rgba(212,175,55,.04);
+  font-size:18px;color:#e8e3d4;margin-bottom:30px;
+  padding:26px 28px;background:rgba(212,175,55,.05);
   border-left:3px solid var(--gold);
+  line-height:1.85;
 }
 .gensen-grid{
   display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
@@ -561,6 +562,22 @@ section{
 .gensen-card li{padding:6px 0 6px 20px;position:relative;font-size:16px;color:#c9c4b5}
 .gensen-card li::before{
   content:'▸';position:absolute;left:0;color:var(--gold);
+}
+
+/* GENSEN merits — thin horizontal bars */
+.gensen-merits{
+  list-style:none;
+  display:flex;flex-direction:column;gap:4px;
+}
+.gensen-merits li{
+  padding:6px 16px;
+  background:rgba(255,255,255,.025);
+  font-size:15px;color:#c9c4b5;
+  position:relative;
+  letter-spacing:.02em;
+}
+.gensen-merits li::before{
+  content:'▪';color:var(--gold);margin-right:10px;font-size:10px;vertical-align:middle;
 }
 
 /* Growth list */
@@ -848,7 +865,7 @@ footer .copy{font-size:11px;color:#6a6456;margin-top:18px;letter-spacing:1px}
   </div>
 </section>
 
-<section style="padding-top:6px;padding-bottom:20px">
+<section style="padding-top:6px;padding-bottom:10px">
   <div class="pillars-viewport reveal">
     <div class="pillars-track">
       <div class="pillar"><div class="num">01</div><h3>ビジネス開脳スキルの習得</h3><p>マインドマップを使った「見える化・整理・戦略設計」を中心に、事業構築の"脳の使い方"を鍛える。</p></div>
@@ -939,7 +956,7 @@ footer .copy{font-size:11px;color:#6a6456;margin-top:18px;letter-spacing:1px}
 </section>
 
 <!-- GENSEN -->
-<section id="gensen">
+<section id="gensen" style="padding-top:60px">
   <div class="sec-head reveal">
     <div class="sec-label">03 / GENSEN</div>
     <h2 class="sec-title"><span class="gold">GENSEN</span>｜サービス内容</h2>
@@ -979,17 +996,17 @@ footer .copy{font-size:11px;color:#6a6456;margin-top:18px;letter-spacing:1px}
 
   <div class="reveal">
     <h3 style="color:var(--gold-light);font-size:20px;margin:40px 0 20px">【GENSENを使うメリット】</h3>
-    <ul style="list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px">
-      <li style="padding:16px 20px;background:rgba(212,175,55,.05);border-left:2px solid var(--gold);font-size:14px">■ 営業経験がなくても売れる（商材説明セット完備）</li>
-      <li style="padding:16px 20px;background:rgba(212,175,55,.05);border-left:2px solid var(--gold);font-size:14px">■ 紹介だけで収益が作れる</li>
-      <li style="padding:16px 20px;background:rgba(212,175,55,.05);border-left:2px solid var(--gold);font-size:14px">■ 自分の商品がなくてもビジネスが成立する</li>
-      <li style="padding:16px 20px;background:rgba(212,175,55,.05);border-left:2px solid var(--gold);font-size:14px">■ 商材が随時追加され、武器が増え続ける</li>
-      <li style="padding:16px 20px;background:rgba(212,175,55,.05);border-left:2px solid var(--gold);font-size:14px">■ コミュニティ会費内に含まれ追加負担なし</li>
+    <ul class="gensen-merits">
+      <li>営業経験がなくても売れる（商材説明セット完備）</li>
+      <li>紹介だけで収益が作れる</li>
+      <li>自分の商品がなくてもビジネスが成立する</li>
+      <li>商材が随時追加され、武器が増え続ける</li>
+      <li>コミュニティ会費内に含まれ追加負担なし</li>
     </ul>
-    <p style="margin-top:24px;padding:20px;background:rgba(212,175,55,.04);border-left:3px solid var(--gold);font-size:14px;color:#c9c4b5">
+    <p style="margin-top:28px;padding:24px 26px;background:rgba(212,175,55,.04);border-left:3px solid var(--gold);font-size:15px;color:#b8b3a3;line-height:1.9">
       GENSENは、<br>
-      「ビジネスを始めたいのに何を売ればいいかわからない」<br>
-      「ビジネスを始めているけど他社と差別化した商品を持っていない」<br>
+      <span style="display:inline-block;font-size:17px;color:#fff;font-weight:600;margin:6px 0">「ビジネスを始めたいのに何を売ればいいかわからない」</span><br>
+      <span style="display:inline-block;font-size:17px;color:#fff;font-weight:600;margin:6px 0">「ビジネスを始めているけど他社と差別化した商品を持っていない」</span><br>
       という人の悩みを一気に解消するサービスです。
     </p>
   </div>
