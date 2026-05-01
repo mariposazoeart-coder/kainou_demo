@@ -614,6 +614,15 @@ section{
     url('images/571327.jpg') center/cover no-repeat fixed;
   z-index:-1;
 }
+@media(max-width:768px){
+  .growth-section::before{
+    background:
+      linear-gradient(180deg,rgba(5,5,5,.8),rgba(5,5,5,.88)),
+      url('images/571327.jpg') no-repeat scroll;
+    background-size:auto,140% auto;
+    background-position:0 0,center calc(50% + var(--parallax,0px));
+  }
+}
 .growth-item::before{
   counter-increment:g;
   content:counter(g,decimal-leading-zero);
@@ -1038,7 +1047,7 @@ footer .copy{font-size:11px;color:#6a6456;margin-top:18px;letter-spacing:1px}
         <p style="font-size:12px;color:#8a8373;margin-top:14px">※クロージング不要。興味を持っている人を<br class="sp-br">トスアップ（お繋ぎ）いただくだけで OK。</p>
       </div>
       <div class="gensen-card">
-        <h4>② 紹介で収益が発生する"紹介型モデル"</h4>
+        <h4>② 紹介で収益が発生する<br class="sp-br">"紹介型モデル"</h4>
         <p style="font-size:15px;color:#c9c4b5;line-height:1.7">商材を紹介 → 契約 → 報酬発生。<br>難しいスキルは不要で、名刺交換レベルの軽い接点でも収益化が可能。</p>
       </div>
     </div>
@@ -1302,6 +1311,24 @@ window.addEventListener('scroll',()=>{
   if(window.scrollY>50)nav.style.background='rgba(5,5,5,.9)';
   else nav.style.background='rgba(5,5,5,.65)';
 });
+
+// Mobile parallax for Growth section bg
+(function(){
+  const sec=document.querySelector('.growth-section');
+  if(!sec)return;
+  const mql=window.matchMedia('(max-width:768px)');
+  function update(){
+    if(!mql.matches){sec.style.removeProperty('--parallax');return}
+    const r=sec.getBoundingClientRect();
+    const wh=window.innerHeight;
+    const progress=(wh-r.top)/(wh+r.height);
+    const offset=(progress-0.5)*120;
+    sec.style.setProperty('--parallax',`${-offset}px`);
+  }
+  window.addEventListener('scroll',update,{passive:true});
+  window.addEventListener('resize',update);
+  update();
+})();
 
 // Pillars carousel — transform-based infinite loop with touch drag scrubbing
 (function(){
