@@ -624,25 +624,22 @@ section{
 .growth-item > div:first-of-type{flex:1;min-width:0}
 .growth-icon{
   flex:0 0 auto;
-  width:48px;height:48px;
+  width:62px;height:62px;
   color:var(--gold);
   display:flex;align-items:center;justify-content:center;
-  border:1px solid rgba(212,175,55,.35);
-  background:linear-gradient(135deg,rgba(212,175,55,.06),rgba(0,0,0,.4));
-  clip-path:polygon(8px 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%,0 8px);
   align-self:center;
-  transition:border-color .3s,color .3s,transform .3s;
+  margin-right:32px;
+  transition:color .3s,transform .3s;
 }
 .growth-item:hover .growth-icon{
-  border-color:var(--gold);
   color:var(--gold-light);
-  transform:scale(1.06);
+  transform:scale(1.08);
 }
-.growth-icon svg{width:60%;height:60%;display:block}
+.growth-icon svg{width:100%;height:100%;display:block}
 .growth-item h3{font-size:17px;color:var(--gold-light);margin-bottom:8px;font-weight:700}
 .growth-item p{font-size:16px;color:#b8b3a3}
 @media(max-width:768px){
-  .growth-icon{width:40px;height:40px}
+  .growth-icon{width:48px;height:48px;margin-right:0}
 }
 
 /* Schedule */
