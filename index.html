@@ -185,20 +185,12 @@ nav .cta:hover{
 @keyframes fadeLady{
   0%{opacity:0;filter:blur(18px) brightness(.7) drop-shadow(0 0 40px rgba(0,0,0,.7))}
   60%{opacity:.92;filter:blur(5px) brightness(.8) drop-shadow(0 0 40px rgba(0,0,0,.7))}
-  100%{opacity:1;filter:blur(0) brightness(.85)
-    drop-shadow(0 0 .8px rgba(0,0,0,1))
-    drop-shadow(0 0 1.4px rgba(0,0,0,1))
-    drop-shadow(0 0 2px rgba(0,0,0,.95))
-    drop-shadow(0 0 40px rgba(0,0,0,.7))}
+  100%{opacity:1;filter:blur(0) brightness(.85) drop-shadow(0 0 40px rgba(0,0,0,.7))}
 }
 @keyframes fadeMan{
   0%{opacity:0;filter:blur(18px) brightness(.7) drop-shadow(0 0 40px rgba(0,0,0,.7))}
   60%{opacity:.92;filter:blur(5px) brightness(.8) drop-shadow(0 0 40px rgba(0,0,0,.7))}
-  100%{opacity:1;filter:blur(0) brightness(.85)
-    drop-shadow(0 0 .8px rgba(0,0,0,1))
-    drop-shadow(0 0 1.4px rgba(0,0,0,1))
-    drop-shadow(0 0 2px rgba(0,0,0,.95))
-    drop-shadow(0 0 40px rgba(0,0,0,.7))}
+  100%{opacity:1;filter:blur(0) brightness(.85) drop-shadow(0 0 40px rgba(0,0,0,.7))}
 }
 @keyframes fadeMain{
   0%{
@@ -851,11 +843,6 @@ footer .copy{font-size:11px;color:#6a6456;margin-top:18px;letter-spacing:1px}
     object-fit:cover;opacity:.5;
   }
   .fv-char{height:46%;max-height:360px}
-  .fv-char.lady,
-  .fv-char.man{
-    -webkit-mask-image:radial-gradient(ellipse 65% 85% at center,#000 45%,rgba(0,0,0,.4) 75%,transparent 100%);
-            mask-image:radial-gradient(ellipse 65% 85% at center,#000 45%,rgba(0,0,0,.4) 75%,transparent 100%);
-  }
   .fv-char.lady{left:74% !important;animation:fadeLady 1.6s ease-out 5s both !important}
   .fv-char.man{left:26% !important;animation:fadeMan 1.6s ease-out 5.8s both !important}
   .fv-char.main{height:52%;max-height:400px;animation:fadeMain 1.8s ease-out 6.7s both !important}
