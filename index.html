@@ -842,10 +842,13 @@ footer .copy{font-size:11px;color:#6a6456;margin-top:18px;letter-spacing:1px}
     left:50%;transform:translateX(-50%);
     object-fit:cover;opacity:.5;
   }
-  .fv-char{height:46%;max-height:360px}
-  .fv-char.lady{left:74% !important;animation:fadeLady 1.6s ease-out 5s both !important}
-  .fv-char.man{left:26% !important;animation:fadeMan 1.6s ease-out 5.8s both !important}
-  .fv-char.main{height:52%;max-height:400px;animation:fadeMain 1.8s ease-out 6.7s both !important}
+  .fv-char{height:46%;max-height:360px;filter:none !important}
+  .fv-char.lady{left:74% !important;animation:fadeLadySP 1.6s ease-out 5s both !important}
+  .fv-char.man{left:26% !important;animation:fadeManSP 1.6s ease-out 5.8s both !important}
+  .fv-char.main{height:52%;max-height:400px;animation:fadeMainSP 1.8s ease-out 6.7s both !important}
+  @keyframes fadeLadySP{0%{opacity:0}100%{opacity:.9}}
+  @keyframes fadeManSP{0%{opacity:0}100%{opacity:.9}}
+  @keyframes fadeMainSP{0%{opacity:0}100%{opacity:1}}
   .fv-text-top{animation:fvBlockRise 1.2s ease 8.4s forwards !important}
   .fv-text-bottom{animation:fvBlockRise 1.2s ease 8.6s forwards !important}
   .scroll-hint{animation:fvBlockRise 0.8s ease 9.2s forwards !important}
